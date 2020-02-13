@@ -1,0 +1,47 @@
+.full-screen-container {
+  box-sizing: border-box;
+  height: 100vh;
+
+  .full-screen-content {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.first-screen {
+  padding: 0 15px 0 15px;
+  h1 {
+    margin-top: 0;
+    color: #5396d2;
+  }
+}
+
+.main-index {
+  color: #fff;
+}
+
+.arrow-down {
+  text-align: center;
+  padding-top: 40px;
+  animation: bounce 1.5s infinite;
+
+  i {
+    cursor: pointer;
+    font-size: 30px;
+    ;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-3px);
+  }
+
+  50% {
+    transform: translateY(3px);
+  }
+
+  100% {
+    transform: translateY(-3px);
+  }
+}

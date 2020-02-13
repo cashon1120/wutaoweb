@@ -1,21 +1,24 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import React, {Component, Fragment} from 'react';
+import Swiper from './swiper/swiper'
+
+import './style.scss'
 
 class Home extends Component {
   constructor(props) {
     super(props);
-
     this.state = {};
   }
 
   render() {
-    const className = 'Home';
-
     return (
-      <div className={`${className}`}>
-        <h1>This is Home</h1>
-        <div><Link to={'/wechat/home'}>Manage Home</Link></div>
-      </div>
+      <Fragment>
+        <div className="black-bg">
+          <Swiper/>
+        </div>
+        <div style={{
+          height: 500
+        }}>234</div>
+      </Fragment>
     );
   }
 }
