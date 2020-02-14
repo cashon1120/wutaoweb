@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import Swiper from './swiper/swiper'
+import Footer from '../../components/footer/footer'
 
 import './style.scss'
 
@@ -15,8 +16,8 @@ class Home extends Component {
         <div className="black-bg">
           <Swiper/>
         </div>
-        <div className="index-service">
-          <div className="content-wrapper">
+        <div className="card-container index-service">
+          <div className="card-container_content content-wrapper">
             <h1>We bring ideas from
               <br/>
               conception to completion</h1>
@@ -45,7 +46,7 @@ class Home extends Component {
                 <div className="content">
                   <a href="https://www.swensonhe.com/services">
                     <h3>Web Applications</h3>
-                    <div className="flex-container flex-end">
+                    <div className="flex-container flex-start">
                       <div className="flex-1">
                         Media and Content<br/>
                         Enterprise Back Office<br/>
@@ -70,6 +71,8 @@ class Home extends Component {
           </div>
 
         </div>
+
+        <Footer />
       </Fragment>
     );
   }

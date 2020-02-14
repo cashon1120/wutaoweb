@@ -1,0 +1,40 @@
+footer {
+  background: url(../../assets/images/footer-bg.jpg) bottom center no-repeat;
+  background-size: cover;
+
+  .address {
+    line-height: 1.6;
+    ;
+  }
+
+  .code {
+    padding-top: 30px;
+    text-align: center;
+
+    img {
+      width: 150px;
+    }
+
+    @media(min-width: 1024px) {
+      padding-top: 0;
+      text-align: right;
+    }
+  }
+
+  .card-container {
+    padding: 50px 30px;
+
+    @media(min-width: 768px) {
+      padding: 100px 80px;
+    }
+  }
+
+  .card-container_content {
+    box-shadow: 0 8px 20px 0 hsla(0, 0%, 88%, .5);
+    padding: 50px 30px !important;
+
+    @media(min-width:768px) {
+      padding: 80px 80px 50px 80px !important;
+    }
+  }
+}

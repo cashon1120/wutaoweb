@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import $ from 'jquery'
-import {bodyScrollTo, getOs, throttle} from '../../../utils/util'
+import {bodyScrollTo, getOs} from '../../../utils/util'
 import './swiper.scss'
 
 import Image1 from '../../../assets/images/temp1.png'
@@ -60,7 +60,7 @@ class Swiper extends Component {
       scrollContent: $('#scrollContent')
     }, () => {
       window.addEventListener('resize', this.toggleScrollEvent)
-      // this.toggleScrollEvent()
+       // this.toggleScrollEvent()
       const {windowHeight} = this.state
       if ($(document).scrollTop() >= windowHeight) {
         this.setState({isFirstScreen: false})

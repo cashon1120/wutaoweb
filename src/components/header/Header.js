@@ -2,45 +2,59 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import $ from 'jquery'
 import Logo from '../../assets/images/xm-logo.png';
-import {throttle, getOs} from '../../utils/util'
+import {throttle, getOs, bodyScrollTo} from '../../utils/util'
 import './header.scss';
 
-let scrollEle = null // 滚动节点, scrollDom
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      windhowHeight: null,
+      scrollEle: null,
       isOpen: false,
       isHome: false,
-      showHeader: true
+      showHeader: true,
+      lastScrollTop: null
     };
   }
 
   componentDidMount() {
     setTimeout(() => {
-      scrollEle = document.getElementById('scrollDom')
-      this.handlerBindEvent(scrollEle, throttle(this.handlerScroll, 200), {passive: false})
+      this.setState({
+        windhowHeight: $(window).height(),
+        scrollEle: document.getElementById('scrollDom')
+      }, () => {
+        this.handlerBindEvent(this.state.scrollEle, throttle(this.handlerScroll, 200), {passive: false})
+      })
     }, 200);
 
     this.setIndexHead()
     $(document).on('scroll', throttle(this.headerToggleShow, 200))
   }
 
-  handlerScroll = e => {
-    const deltaY = getOs() === 'Firefox'
-      ? e.detail
-      : e.wheelDelta
-    const direction = deltaY > 0
-      ? true
+  handlerScroll = (e) => {
+    const {windhowHeight} = this.state
+    if($(document).scrollTop() < windhowHeight){
+      return 
+    }
+    e.preventDefault();
+    e.stopPropagation();
+    const direction = (e.detail > 0 || e.wheelDelta < 0)
+      ? false
       : false
     this.setState({showHeader: direction})
   }
 
-  componentWillUnmount = () => {
-    this.setState = (state, callback) => {
-      return;
-    };
+  headerToggleShow = () => {
+    const {lastScrollTop} = this.state
+    let direction = $(document).scrollTop() > lastScrollTop
+      ? false
+      : true
+    this.setState({
+      showHeader: direction,
+      lastScrollTop: $(document).scrollTop()
+    })
   }
 
   // 绑定滚动事件
@@ -60,15 +74,20 @@ class Header extends Component {
     dom.removeEventListener(eventName, fn)
   }
 
-  headerToggleShow = (e) => {
-    const deltaY = getOs() === 'Firefox'
-    ? e.detail
-    : e.wheelDelta
-  const direction = deltaY > 0
-    ? true
-    : false
+  headerToggleShow = () => {
+    const {lastScrollTop, showHeader} = this.state
+    if($(document).scrollTop() < 80 && !showHeader){
+      this.setState({
+        showHeader: true,
+      })
+      return
+    }
+    let direction = $(document).scrollTop() > lastScrollTop
+      ? false
+      : true
     this.setState({
-      showHeader: direction
+      showHeader: direction,
+      lastScrollTop: $(document).scrollTop()
     })
   }
 
@@ -89,57 +108,61 @@ class Header extends Component {
     })
   }
 
+  handlerShowContact = () => {
+    const contactDom = $('#contact')
+    bodyScrollTo('html,body', contactDom.offset().top, () => {})
+  }
+
   render() {
     const {isOpen, isHome, showHeader} = this.state
-    return (
-      <header className={showHeader
-        ? 'show'
-        : 'hide'}>
-        <div
-          className={isHome
-          ? "container index-header"
-          : "container"}>
-          <div className="flex-container header-container">
-            <div className="flex-1">
-              <img src={Logo} className="logo" alt="logo"/>
-            </div>
-            <div>
-              <span className="btn nav-contact">联系我们</span>
-            </div>
-            <div>
-              <span
-                className={isOpen
-                ? 'nav-icon open'
-                : 'nav-icon'}
-                onClick={() => this.handlerOpen()}>
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-            </div>
+    return ( 
+      <header className={showHeader ? 'show' : 'hide'}>
+      <div
+        className={isHome
+        ? "container index-header"
+        : "container"}>
+        <div className="flex-container header-container">
+          <div className="flex-1">
+            <img src={Logo} className="logo" alt="logo"/>
+          </div>
+          <div>
+            <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>联系我们</span>
+          </div>
+          <div>
+            <span
+              className={isOpen
+              ? 'nav-icon open'
+              : 'nav-icon'}
+              onClick={() => this.handlerOpen()}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
           </div>
         </div>
-        <nav
-          className={isOpen
-          ? 'open'
-          : null}
-          onClick={() => this.handlerOpen()}>
-          <ul>
-            <li>
-              <Link to='/'>首页</Link>
-            </li>
-            <li>
-              <Link to='/work'>案例</Link>
-            </li>
-            <li>
-              <Link to='/services'>服务</Link>
-            </li>
-            <li>
-              <a href='#contact'>联系我们</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      </div>
+      <nav
+        className={isOpen
+        ? 'open'
+        : null}
+        onClick={() => this.handlerOpen()}>
+        <ul>
+          <li>
+            <Link to='/'>首页</Link>
+          </li>
+          <li>
+            <Link to='/work'>案例</Link>
+          </li>
+          <li>
+            <Link to='/services'>服务</Link>
+          </li>
+          <li>
+            <a href='#contact'>联系我们</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
     );
   }
 }

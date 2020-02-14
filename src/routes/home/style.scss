@@ -49,25 +49,12 @@
   }
 }
 
-
 .index-service{
   background-image: url(../../assets/images/palm-tree.jpg);
-  padding: 0;
+
   background-size: 100%;
   overflow: auto;
-  @media(min-width: 768px){
-    padding: 100px 80px;
-  }
-  h1{
-    margin-bottom: 25px;
-    line-height: 30px;
-    color: #454545;
-    font-weight: normal;
-    @media(min-width: 768px){
-      line-height: 40px;
-      margin-bottom: 35px;
-    }
-  }
+
   .service-btn{
     text-align: center;
     margin-top: 40px;
@@ -76,18 +63,7 @@
 
 .content-wrapper {
   box-shadow: 0 12px 22px 0 rgba(0,0,0,.24), 0 7px 15px 0 hsla(0,0%,76%,.5);
-  padding: 50px 15px 40px 15px;
-  background-color: #fff;
-  @media(min-width: 768px){
-    padding:80px 80px 50px 80px;
-  }
   .content {
-    h3 {
-      margin-bottom: 15px;
-      @media (min-width:768px) {
-        margin-bottom: 25px;
-      }
-    }
     i {
       font-size: 40px;
       opacity: .5;
