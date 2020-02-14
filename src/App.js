@@ -17,10 +17,17 @@ const Work = Loadable({
   loading: MyLoadingComponent
 });
 
+const Services = Loadable({
+  loader: () => import('./routes/services'),
+  loading: MyLoadingComponent
+})
+
 const NoMatch = Loadable({
   loader: () => import('./routes/404.js'),
   loading: MyLoadingComponent
 })
+
+
 
 function App() {
   return (
@@ -30,6 +37,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home}/>
           <Route path='/work' component={Work}/>
+          <Route path='/services' component={Services}/>
           <Route component={NoMatch}/>
         </Switch>
       </BrowserRouter>

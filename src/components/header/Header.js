@@ -5,7 +5,6 @@ import Logo from '../../assets/images/xm-logo.png';
 import {throttle, getOs, bodyScrollTo} from '../../utils/util'
 import './header.scss';
 
-
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +24,10 @@ class Header extends Component {
         windhowHeight: $(window).height(),
         scrollEle: document.getElementById('scrollDom')
       }, () => {
-        this.handlerBindEvent(this.state.scrollEle, throttle(this.handlerScroll, 200), {passive: false})
+        const {scrollEle} = this.state
+        if (scrollEle) {
+          this.handlerBindEvent(this.state.scrollEle, throttle(this.handlerScroll, 200), {passive: false})
+        }
       })
     }, 200);
 
@@ -35,8 +37,8 @@ class Header extends Component {
 
   handlerScroll = (e) => {
     const {windhowHeight} = this.state
-    if($(document).scrollTop() < windhowHeight){
-      return 
+    if ($(document).scrollTop() < windhowHeight) {
+      return
     }
     e.preventDefault();
     e.stopPropagation();
@@ -76,10 +78,8 @@ class Header extends Component {
 
   headerToggleShow = () => {
     const {lastScrollTop, showHeader} = this.state
-    if($(document).scrollTop() < 80 && !showHeader){
-      this.setState({
-        showHeader: true,
-      })
+    if ($(document).scrollTop() < 80 && !showHeader) {
+      this.setState({showHeader: true})
       return
     }
     let direction = $(document).scrollTop() > lastScrollTop
@@ -93,7 +93,7 @@ class Header extends Component {
 
   setIndexHead() {
     const {pathname} = window.location
-    const isHome = pathname === '/'
+    const isHome = (pathname === '/' || pathname === '/services')
       ? true
       : false
     this.setState({isHome})
@@ -115,53 +115,55 @@ class Header extends Component {
 
   render() {
     const {isOpen, isHome, showHeader} = this.state
-    return ( 
-      <header className={showHeader ? 'show' : 'hide'}>
-      <div
-        className={isHome
-        ? "container index-header"
-        : "container"}>
-        <div className="flex-container header-container">
-          <div className="flex-1">
-            <img src={Logo} className="logo" alt="logo"/>
-          </div>
-          <div>
-            <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>联系我们</span>
-          </div>
-          <div>
-            <span
-              className={isOpen
-              ? 'nav-icon open'
-              : 'nav-icon'}
-              onClick={() => this.handlerOpen()}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
+    return (
+      <header className={showHeader
+        ? 'show'
+        : 'hide'}>
+        <div
+          className={isHome
+          ? "container index-header"
+          : "container"}>
+          <div className="flex-container header-container">
+            <div className="flex-1">
+              <img src={Logo} className="logo" alt="logo"/>
+            </div>
+            <div>
+              <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>联系我们</span>
+            </div>
+            <div>
+              <span
+                className={isOpen
+                ? 'nav-icon open'
+                : 'nav-icon'}
+                onClick={() => this.handlerOpen()}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <nav
-        className={isOpen
-        ? 'open'
-        : null}
-        onClick={() => this.handlerOpen()}>
-        <ul>
-          <li>
-            <Link to='/'>首页</Link>
-          </li>
-          <li>
-            <Link to='/work'>案例</Link>
-          </li>
-          <li>
-            <Link to='/services'>服务</Link>
-          </li>
-          <li>
-            <a href='#contact'>联系我们</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+        <nav
+          className={isOpen
+          ? 'open'
+          : null}
+          onClick={() => this.handlerOpen()}>
+          <ul>
+            <li>
+              <Link to='/'>首页</Link>
+            </li>
+            <li>
+              <Link to='/work'>案例</Link>
+            </li>
+            <li>
+              <Link to='/services'>服务</Link>
+            </li>
+            <li>
+              <a href='#contact'>联系我们</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
     );
   }

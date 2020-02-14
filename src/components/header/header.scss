@@ -5,6 +5,7 @@ header {
   z-index: 9999;
   transition: .4s;
   top: 0;
+  background-color: #fff;
   box-shadow: 0 0 8px rgba(0, 0, 0, .1);
 
   .container {
@@ -23,6 +24,10 @@ header {
 
 .header-container {
   height: 80px;
+  @media(min-width: 1920px){
+    width: 1600px;
+    margin: auto;
+  }
 }
 
 .logo {
@@ -164,6 +169,10 @@ nav {
   }
 }
 
+.index-header {
+  width: 100% !important;
+  box-sizing: border-box;
+}
 .index-header .nav-icon span,
 .nav-icon.open span {
   background: #fff;
