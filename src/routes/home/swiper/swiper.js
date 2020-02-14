@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import $ from 'jquery'
-import {bodyScrollTo, getOs} from '../../../utils/util'
+import {bodyScrollTo, getOs, throttle} from '../../../utils/util'
 import './swiper.scss'
 
 import Image1 from '../../../assets/images/temp1.png'
@@ -8,23 +8,19 @@ import Image2 from '../../../assets/images/temp2.png'
 import Phone1 from '../../../assets/images/phone-content.png'
 import Iphone from '../../../assets/images/iphone.png'
 
-let isScrolling = false // 当前是否滚动
-let scrollDerection = 'down' // 滚动方向
-let scrollEle = null // 滚动节点, scrollDom
-let isBindScroll = false // 是否为节点绑定滚动事件
-
 class Swiper extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      windowWidth: $(window).width(),
-      windowHeight: $(window).height(),
-      scrollIndex: -1,
-      lastScrollTop: 0,
-      scrollEle: null,
-      outerFixed: false,
-      isEnd: false,
-      showPoint: false,
+      isScrolling: false, // 当前是否滚动
+      isFirstScreen: true, // 当前是否在第一屏
+      scrollEle: null, // 滚动节点, scrollDom
+      scrollContent: null, // 滚动元素, .swiper-content
+      isBindScroll: false, // 是否为节点绑定滚动事件
+      lastScrolltop: 0,
+      windowWidth: 0,
+      windowHeight: 0,
+      scrollIndex: 0,
       data: [
         {
           title: 'simplehuman',
@@ -56,38 +52,52 @@ class Swiper extends Component {
   }
 
   componentDidMount() {
-    scrollEle = document
-    window.addEventListener('resize', this.toggleScrollEvent)
-    this.toggleScrollEvent()
+    this.setState({
+      windowWidth: $(window).width(),
+      windowHeight: $(window).height(),
+      scrollIndex: 0,
+      scrollEle: document.getElementById('scrollDom'),
+      scrollContent: $('#scrollContent')
+    }, () => {
+      window.addEventListener('resize', this.toggleScrollEvent)
+      // this.toggleScrollEvent()
+      const {windowHeight} = this.state
+      if ($(document).scrollTop() >= windowHeight) {
+        this.setState({isFirstScreen: false})
+
+      }
+    })
+
+  }
+
+  componentWillUnmount = () => {
+    this.setState = () => {
+      return;
+    };
   }
 
   toggleScrollEvent = () => {
-    const {data, windowHeight, windowWidth} = this.state
-    $(document).unbind('scroll')
+    const {windowWidth, scrollEle} = this.state
     if (windowWidth > 768) {
       // 绑定页面滚动事件
-      // $(document).on('scroll', () => {
-
-      //   // if ($(document).scrollTop() <= windowHeight * data.length && !isBindScroll) {
-      //   //   const {scrollIndex} = this.setState
-      //   //   this.handlerUnbindEvent(scrollEle, this.handlerScroll)
-      //   //   this.handlerBindEvent(scrollEle, this.handlerScroll, {passive: false})
-      //   //   if (scrollIndex > 0) {
-      //   //     this.setState({outerFixed: true})
-      //   //   }
-      //   // }
-
-      //   // 滚出最后一屏
-      //   if ($(document).scrollTop() > windowHeight * data.length) {
-      //     this.setState({showPoint: false})
-      //     this.handlerUnbindEvent(scrollEle, this.handlerScroll)
-      //   }
-      // })
+      $(document).unbind('scroll', this.bindDocumentScroll)
+      $(document).on('scroll', this.bindDocumentScroll)
       // 绑定 swiper 滚动事件
       this.handlerBindEvent(scrollEle, this.handlerScroll, {passive: false})
-    } else {
-      this.setState({scrollIndex: 0})
     }
+  }
+
+  bindDocumentScroll = () => {
+    const {windowHeight, isBindScroll, lastScrolltop, scrollEle} = this.state
+    if ($(document).scrollTop() < (windowHeight + 50) && !isBindScroll && $(document).scrollTop() < lastScrolltop) {
+      this.setBodyScroll('html,body', 1)
+      this.handlerBindEvent(scrollEle, this.handlerScroll, {passive: false})
+      return
+    }
+
+    this.setState({
+      lastScrolltop: $(document).scrollTop()
+    })
   }
 
   // 绑定滚动事件
@@ -97,7 +107,7 @@ class Swiper extends Component {
       ? 'DOMMouseScroll'
       : 'mousewheel'
     dom.addEventListener(eventName, fn, params)
-    isBindScroll = true
+    this.setState({isBindScroll: true})
   }
 
   // 接触滚动事件
@@ -106,61 +116,74 @@ class Swiper extends Component {
       ? 'DOMMouseScroll'
       : 'mousewheel'
     dom.removeEventListener(eventName, fn)
-    isBindScroll = false
+    this.setState({isBindScroll: false})
   }
 
   // 滚动事件
   handlerScroll = (e) => {
-    const {data} = this.state
+    const {data, isScrolling, isFirstScreen, scrollEle} = this.state
+
     e.preventDefault();
     e.stopPropagation();
-    let {scrollIndex} = this.state
     if (!isScrolling) {
-      isScrolling = true
-      const deltaY = e.deltaY || e.detail
-      if (deltaY > 0) {
-        scrollDerection = 'down'
-        // 滚动到最后一项目时取消滚动事件
+      if (e.detail > 0 || e.wheelDelta < 0) {
+        let {scrollIndex} = this.state
+        if (isFirstScreen) {
+          this.setBodyScroll('html,body', 1)
+          return
+        }
+
+        // 到最后一屏解除绑定
+        if (scrollIndex === data.length - 1) {
+          this.handlerUnbindEvent(scrollEle, this.handlerScroll)
+          return
+        }
+
         scrollIndex = Math.min(data.length - 1, scrollIndex + 1)
-        if (scrollIndex === data.length - 1) {
-          setTimeout(() => {
-            this.handlerUnbindEvent(scrollEle, this.handlerScroll)
-          }, 1000);
-        }
+        this.setSwiperScroll(scrollIndex)
       } else {
-        scrollDerection = 'up'
-        if (scrollIndex === 0) {
-          this.setState({outerFixed: false})
+        let {scrollIndex} = this.state
+        // 从 swiper 滚动到 第一屏
+        if (scrollIndex === 0 && !isFirstScreen) {
+          this.setBodyScroll('html,body', 0)
+          return
         }
-        if (scrollIndex === data.length - 1) {
-          this.setState({isEnd: false, outerFixed: true})
-        }
-        scrollIndex = Math.max(-1, scrollIndex - 1)
+        scrollIndex = Math.max(0, scrollIndex - 1)
+        this.setSwiperScroll(scrollIndex)
       }
-
-      this.setBodyScroll(scrollIndex)
-
     }
   }
 
-  handlerCallback = () => {
-    const {scrollIndex, data} = this.state
-    if (scrollIndex === 0 && scrollDerection === 'down') {
-      this.setState({outerFixed: true})
+  setSwiperScroll = scrollIndex => {
+    const {isScrolling, scrollContent} = this.state
+    if (!isScrolling) {
+      this.setState({isScrolling: true})
+      const {windowHeight} = this.state
+      scrollContent.animate({
+        top: -scrollIndex * windowHeight
+      }, 500, 'swing', () => {
+        setTimeout(() => {
+          this.setState({isScrolling: false})
+        }, 500);
+      });
+      this.setState({scrollIndex})
     }
-    if (scrollIndex === data.length - 1 && scrollDerection === 'down') {
-      this.setState({isEnd: true, outerFixed: false})
-    }
-    isScrolling = false
   }
 
-  setBodyScroll(scrollIndex) {
-    const show = scrollIndex > -1
-      ? true
-      : false
-    this.setState({scrollIndex, showPoint: show})
+  setBodyScroll(dom, screenNumber) {
+    this.setState({isScrolling: true})
     const {windowHeight} = this.state
-    bodyScrollTo((scrollIndex + 1) * windowHeight, this.handlerCallback)
+    const callback = () => {
+      this.setState({
+        isFirstScreen: screenNumber === 1
+          ? false
+          : true
+      })
+      setTimeout(() => {
+        this.setState({isScrolling: false})
+      }, 500);
+    }
+    bodyScrollTo(dom, screenNumber * windowHeight, callback)
   }
 
   // 移动端点击按钮切换
@@ -181,23 +204,16 @@ class Swiper extends Component {
   }
 
   handleSetActive = (index) => {
+    const {windowWidth} = this.state
+    if (windowWidth > 768) {
+      this.setSwiperScroll(index)
+      return
+    }
     this.setState({scrollIndex: index})
   }
 
   render() {
-    const {data, scrollIndex, showPoint, outerFixed, isEnd} = this.state
-    let pointClassName = 'swiper-point'
-    if (showPoint) {
-      pointClassName = 'swiper-point show'
-    }
-    let outerClassName = 'outer-phone'
-    if (outerFixed) {
-      outerClassName += ' fixed'
-    }
-    if (isEnd) {
-      outerClassName += ' isEnd'
-    }
-
+    const {data, scrollIndex} = this.state
     return (
       <div id="scrollDom">
         <div className="main main-index first-screen full-screen-container">
@@ -205,69 +221,71 @@ class Swiper extends Component {
             <div>
               <h1>数字体验栩栩如生</h1>
               我们是一家软件咨询公司，专门从事IOS,Android,小程序等平台的软件定制化设计和与开发服务
-              <div className="arrow-down" onClick={() => this.setBodyScroll(0)}>
+              <div className="arrow-down" onClick={() => this.setBodyScroll('html,body', 1)}>
                 <i className="iconfont">&#xe603;</i>
               </div>
             </div>
           </div>
         </div>
         <div className="swiper container">
-          <div className={outerClassName}>
-            <img src={Iphone} alt=""/>
-          </div>
-          {/* swiper */}
-          {data.map((item, index) => (
-            <div
-              className={scrollIndex === index
-              ? "screen-container active"
-              : "screen-container"}
-              key={item.title}>
-              <div className="txt-container">
-                <h1>{item.title}</h1>
-                <section>
-                  {item.content}
-                </section>
-                <a className="btn btn-white" href="@">VIEW PROJECT</a>
-              </div>
+          <img src={Iphone} className="outer-phone" alt=""/>
+          <div className="swiper-content" id="scrollContent">
+            {/* swiper */}
+            {data.map((item, index) => (
+              <div
+                className={scrollIndex === index
+                ? "screen-container active"
+                : "screen-container"}
+                key={item.title}>
+                <div className="screen-list">
+                  <div className="txt-container">
+                    <h1>{item.title}</h1>
+                    <section>
+                      {item.content}
+                    </section>
+                    <a className="btn btn-white" href="@">VIEW PROJECT</a>
+                  </div>
 
-              <div className="img-container">
-                <img src={item.imgSrc} className="bg" alt=""/>
-                <img src={item.phoneSrc} className="phone_content" alt=""/>
+                  <div className="img-container">
+                    <img src={item.imgSrc} className="bg" alt=""/>
+                    <img src={item.phoneSrc} className="phone_content" alt=""/>
+                  </div>
+                  <div className="txt-container-bottom">
+                    <h1>{item.title}</h1>
+                    <section>
+                      {item.content}
+                    </section>
+                    <a className="btn btn-white" href="@">VIEW PROJECT</a>
+                  </div>
+                </div>
               </div>
-              <div className="txt-container-bottom">
-                <h1>{item.title}</h1>
-                <section>
-                  {item.content}
-                </section>
-                <a className="btn btn-white" href="@">VIEW PROJECT</a>
-              </div>
+            ))}
+          </div>
+          {/* 切换 按钮*/}
+          <div className="flex-container swiper-switch">
+            <div>
+              <i className="iconfont" onClick={() => this.handleSetActiveByArr('left')}>&#xe642;</i>
             </div>
-          ))}
-        </div>
-        {/* 切换 按钮*/}
-        <div className="flex-container swiper-switch">
-          <div>
-            <i className="iconfont" onClick={() => this.handleSetActiveByArr('left')}>&#xe642;</i>
+            <div className="flex-1">
+              <h1>{scrollIndex > -1
+                  ? data[scrollIndex].title
+                  : ''}</h1>
+            </div>
+            <div>
+              <i className="iconfont" onClick={() => this.handleSetActiveByArr('right')}>&#xe69c;</i>
+            </div>
           </div>
-          <div className="flex-1">
-            <h1>{scrollIndex > -1
-                ? data[scrollIndex].title
-                : ''}</h1>
+          {/* 切换 标签*/}
+          <div className="swiper-point">
+            {data.map((item, index) => (
+              <span
+                key={item.title}
+                onClick={() => this.handleSetActive(index)}
+                className={scrollIndex === index
+                ? 'active'
+                : null}></span>
+            ))}
           </div>
-          <div>
-            <i className="iconfont" onClick={() => this.handleSetActiveByArr('right')}>&#xe69c;</i>
-          </div>
-        </div>
-        {/* 切换 标签*/}
-        <div className={pointClassName}>
-          {data.map((item, index) => (
-            <span
-              key={item.title}
-              onClick={() => this.handleSetActive(index)}
-              className={scrollIndex === index
-              ? 'active'
-              : null}></span>
-          ))}
         </div>
       </div>
     );
