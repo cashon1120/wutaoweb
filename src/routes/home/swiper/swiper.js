@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
 import $ from 'jquery'
-import {bodyScrollTo, getOs} from '../../../utils/util'
+import {Link} from 'react-router-dom';
+import {bodyScrollTo, getOs, throttle} from '../../../utils/util'
 import './swiper.scss'
 
-import Image1 from '../../../assets/images/temp1.png'
-import Image2 from '../../../assets/images/temp2.png'
-import Phone1 from '../../../assets/images/phone-content.png'
-import Iphone from '../../../assets/images/iphone.png'
+import Image1 from '../../../assets/images/case-1.png'
+import Image2 from '../../../assets/images/case-2.png'
+import Image3 from '../../../assets/images/case-3.jpg'
+
+import Mp41 from '../../../assets/images/mp4-1.mp4'
+import Mp42 from '../../../assets/images/mp4-2.mp4'
+import Mp43 from '../../../assets/images/mp4-3.mp4'
+
+import Iphone from '../../../assets/images/iphonex.png'
 
 class Swiper extends Component {
   constructor(props) {
@@ -21,31 +27,27 @@ class Swiper extends Component {
       windowWidth: 0,
       windowHeight: 0,
       scrollIndex: 0,
+      isPlayIndex: [false, false, false],
+      showPlayBtnState: false,
       data: [
         {
-          title: 'simplehuman',
-          content: `Forward-thinking solutions for forward-thinking clients. A re-imagining of what
-        a virtual home assistant can do. App development that automatically purchase
-        refills of consumable supplies, control networked appliances... convenience at
-        your fingertips.`,
+          id: 1,
+          title: '急先外卖蜂',
+          content: `本土特色美食外卖，急速送达`,
           imgSrc: Image1,
-          phoneSrc: Phone1
+          videoSrc: Mp41
         }, {
-          title: '222',
-          content: `Forward-thinking solutions for forward-thinking clients. A re-imagining of what
-        a virtual home assistant can do. App development that automatically purchase
-        refills of consumable supplies, control networked appliances... convenience at
-        your fingertips.`,
-          imgSrc: Image1,
-          phoneSrc: Phone1
-        }, {
-          title: '333',
-          content: `Forward-thinking solutions for forward-thinking clients. A re-imagining of what
-        a virtual home assistant can do. App development that automatically purchase
-        refills of consumable supplies, control networked appliances... convenience at
-        your fingertips.`,
+          id: 2,
+          title: '阿闻商城',
+          content: `阿闻商城，让养宠物更简单`,
           imgSrc: Image2,
-          phoneSrc: Phone1
+          videoSrc: Mp42
+        }, {
+          id: 3,
+          title: '卡片日记',
+          content: `随手记录生活点滴 `,
+          imgSrc: Image3,
+          videoSrc: Mp43
         }
       ]
     };
@@ -57,10 +59,10 @@ class Swiper extends Component {
       windowHeight: $(window).height(),
       scrollIndex: 0,
       scrollEle: document.getElementById('scrollDom'),
-      scrollContent: $('#scrollContent')
+      scrollContent: $('#scrollContent'),
     }, () => {
-      window.addEventListener('resize', this.toggleScrollEvent)
-       // this.toggleScrollEvent()
+      window.addEventListener('resize', throttle(this.toggleScrollEvent, 300))
+      this.toggleScrollEvent()
       const {windowHeight} = this.state
       if ($(document).scrollTop() >= windowHeight) {
         this.setState({isFirstScreen: false})
@@ -84,7 +86,15 @@ class Swiper extends Component {
       $(document).on('scroll', this.bindDocumentScroll)
       // 绑定 swiper 滚动事件
       this.handlerBindEvent(scrollEle, this.handlerScroll, {passive: false})
+    }else{
+      $(document).unbind('scroll', this.bindDocumentScroll)
+      this.handlerUnbindEvent(scrollEle, this.handlerScroll)
+      this.setShowPlayBtnFn(0)
     }
+  }
+
+  componentWillMount(){
+    $(document).unbind('scroll', this.bindDocumentScroll)
   }
 
   bindDocumentScroll = () => {
@@ -201,6 +211,7 @@ class Swiper extends Component {
       }
     }
     this.setState({scrollIndex})
+    this.setShowPlayBtnFn(scrollIndex)
   }
 
   handleSetActive = (index) => {
@@ -210,10 +221,33 @@ class Swiper extends Component {
       return
     }
     this.setState({scrollIndex: index})
+    this.setShowPlayBtnFn(index)
+  }
+
+  setShowPlayBtnFn = index => {
+    const {isPlayIndex} = this.state
+    const state = !isPlayIndex[index] ? true : false
+    this.setState({
+      showPlayBtnState: state
+    })
+  }
+
+  handlerPLayVideo = () => {
+    const {isPlayIndex, scrollIndex} = this.state
+    const video =  document.getElementById('video' + scrollIndex)
+    isPlayIndex[scrollIndex] = true
+    if(video.play){
+      video.play()
+      this.setState({
+        isPlayIndex,
+        showPlayBtnState: false
+
+      })
+    }
   }
 
   render() {
-    const {data, scrollIndex} = this.state
+    const {data, scrollIndex, showPlayBtnState} = this.state
     return (
       <div id="scrollDom">
         <div className="main main-index first-screen full-screen-container">
@@ -229,6 +263,7 @@ class Swiper extends Component {
         </div>
         <div className="swiper container">
           <img src={Iphone} className="outer-phone" alt=""/>
+          <div className={showPlayBtnState ? "playVideo show" : "playVideo"} onClick={this.handlerPLayVideo}><i className="iconfont">&#xe610;</i></div>
           <div className="swiper-content" id="scrollContent">
             {/* swiper */}
             {data.map((item, index) => (
@@ -243,19 +278,30 @@ class Swiper extends Component {
                     <section>
                       {item.content}
                     </section>
-                    <a className="btn btn-white" href="@">VIEW PROJECT</a>
+                    <Link className="btn btn-white" to={`/work/detail/${item.id}`}>查看详情</Link>
                   </div>
 
                   <div className="img-container">
                     <img src={item.imgSrc} className="bg" alt=""/>
-                    <img src={item.phoneSrc} className="phone_content" alt=""/>
+                    
+                    <video
+                      id={`video${index}`}
+                      // autoPlay={true}
+                      playsInline={true}
+                      muted
+                      loop
+                      className="phone_content">
+                      <source
+                        src={item.videoSrc}
+                        type="video/mp4"/>
+                    </video>
                   </div>
                   <div className="txt-container-bottom">
                     <h1>{item.title}</h1>
                     <section>
                       {item.content}
                     </section>
-                    <a className="btn btn-white" href="@">VIEW PROJECT</a>
+                    <Link className="btn btn-white" to={`/work/detail/${item.id}`}>查看详情</Link>
                   </div>
                 </div>
               </div>

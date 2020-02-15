@@ -76,7 +76,7 @@ class WorkDetail extends Component {
                         Android, Bluetooth, Hybrid, Ionic, iOS, IoT, UI/UX
                       </div>
                     </div>
-                    <a href="#" clasName="more">view more</a>
+                    <a href="#" className="more">view more</a>
                   </div>
                 </div>
                 <div className="space-30"></div>
@@ -94,7 +94,7 @@ class WorkDetail extends Component {
                       </div>
                       
                     </div>
-                    <a href="#" clasName="more">view more</a>
+                    <a href="#" className="more">view more</a>
                   </div>
                 </div>
               </div>

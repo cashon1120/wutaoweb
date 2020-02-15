@@ -1,0 +1,29 @@
+.intrduce{
+  color: #cdcdcd;
+  padding-bottom: 80px;
+  overflow: hidden;
+  h1.process-h1 {
+    color: #fff;
+    padding-top: 60px !important;
+
+    @media(min-width: 768px){
+      padding-top: 100px !important;
+    }
+  }
+  .item-list{
+    text-align:center;
+   
+    h2 {
+      color: #fff;
+      padding-top: 20px;
+      @media(min-width: 1920px)
+      {
+        font-size: 30px;
+      }
+    }
+    img{
+      margin: auto;
+      height: 60px;
+    }
+  }
+}

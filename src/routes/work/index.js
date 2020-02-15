@@ -12,9 +12,9 @@ class Work extends Component {
 
     return (
       <Fragment>
-      <div className="main main-sub page-work">
+      <div className="main page-work">
         <div className="main-container">
-          <h1>Here is some of our work we are really proud of.</h1>
+          <h1>这是我们真正引以为傲的一些工作。</h1>
           <div className="category-list">
             <a className="active" href="https://www.swensonhe.com/work/">All</a>
             <a href="https://www.swensonhe.com/work/e-commerce/">E-commerce</a>

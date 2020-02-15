@@ -25,6 +25,14 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
+var GenerateAssetPlugin=require('generate-asset-webpack-plugin'); 
+var createServerConfig=function(compilation){
+  //console.log("info from GenerateAssetPlugin:");
+  //console.log(compilation);
+  let cfgJson={ApiUrl:"192.168.11.90"};
+  return JSON.stringify(cfgJson);
+}
+
 const postcssNormalize = require('postcss-normalize');
 
 const appPackageJson = require(paths.appPackageJson);
@@ -515,6 +523,13 @@ module.exports = function(webpackEnv) {
     },
     plugins: [
       // Generates an `index.html` file with the <script> injected.
+      new GenerateAssetPlugin({
+        filename: 'serverconfig.json',
+        fn: (compilation, cb) => {
+            cb(null, createServerConfig(compilation));
+        },
+        extraFiles: []
+    }),
       new HtmlWebpackPlugin(
         Object.assign(
           {},

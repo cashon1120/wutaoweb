@@ -10,12 +10,12 @@ body {
 
 @font-face {
   font-family: 'iconfont';  /* project id 1635624 */
-  src: url('//at.alicdn.com/t/font_1635624_ulhvztramkk.eot');
-  src: url('//at.alicdn.com/t/font_1635624_ulhvztramkk.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1635624_ulhvztramkk.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1635624_ulhvztramkk.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1635624_ulhvztramkk.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1635624_ulhvztramkk.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_1635624_0amsy5myw4w.eot');
+  src: url('//at.alicdn.com/t/font_1635624_0amsy5myw4w.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1635624_0amsy5myw4w.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1635624_0amsy5myw4w.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1635624_0amsy5myw4w.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1635624_0amsy5myw4w.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -41,49 +41,62 @@ i {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-a{
-  color: #4b4a4b;
-}
 
-h1,h2,h3,h4,h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 0;
   padding: 0;
 }
+
 h1 {
-  font-family: Big Caslon,sans-serif;
+  font-family: Big Caslon, sans-serif;
   color: #4a4a4a;
   font-size: 22px;
-  font-weight: 500;;
-  @media(min-width:768px){
+  font-weight: 500;
+  ;
+
+  @media(min-width:768px) {
     font-size: 32px;
   }
-  @media(min-width:1366px){
+
+  @media(min-width:1366px) {
     font-size: 40px;
   }
-  @media(min-width:1920px){
+
+  @media(min-width:1920px) {
     font-size: 48px;
   }
 }
-h2{
+
+h2 {
   font-size: 16px;
   color: #000;
-  @media(min-width:768px){
+
+  @media(min-width:768px) {
     font-size: 21px;
   }
-  @media(min-width:1366px){
+
+  @media(min-width:1366px) {
     font-size: 32px;
   }
-  @media(min-width:1920px){
+
+  @media(min-width:1920px) {
     font-size: 40px;
   }
 }
-h3{
+
+h3 {
   color: #333;
   font-size: 16px;
-  @media(min-width:768px){
+
+  @media(min-width:768px) {
     font-size: 21px;
   }
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -101,6 +114,7 @@ code {
 .flex-container {
   display: flex;
   align-items: center;
+
   .flex-1 {
     flex: 1;
   }
@@ -114,7 +128,11 @@ code {
   align-items: flex-start !important;
 }
 
-.flex-stretch{
+.flex-center {
+  align-items: center !important;
+}
+
+.flex-stretch {
   align-items: stretch !important;
 }
 
@@ -122,11 +140,12 @@ code {
 /**主容器**/
 .main {
   padding-top: 90px;
-  &.main-sub{
+
+  &.main-sub {
     padding-left: 15px;
     padding-right: 15px;
   }
-  
+
   &.main-index {
     background: #000;
   }
@@ -152,7 +171,7 @@ code {
   cursor: pointer;
   border: 1px solid #4b4a4b;
 
-  &.btn-lg{
+  &.btn-lg {
     height: 50px;
     line-height: 50px;
     max-width: 300px;
@@ -207,28 +226,34 @@ code {
   height: auto;
   justify-content: space-between;
   flex-direction: column;
-  &.container-grid-2{
-    @media(min-width:768px){
+
+  &.container-grid-2 {
+    @media(min-width:768px) {
       flex-direction: row;
     }
   }
-  &.container-grid-3{
-    .space-30{
+
+  &.container-grid-3 {
+    .space-30 {
       width: 15px;
     }
+
     @media (min-width: 768px) {
       flex-direction: row;
-      .space-30{
+
+      .space-30 {
         width: 30px;
       }
     }
   }
+
   @media (min-width: 1024px) {
     flex-direction: row;
   }
 
   .space-30 {
     height: 15px;
+
     @media (min-width: 1024px) {
       width: 30px;
     }
@@ -241,35 +266,43 @@ code {
 
 .card-container {
   padding: 0;
-  @media(min-width: 768px){
+
+  @media(min-width: 768px) {
     padding: 100px 80px;
   }
 
-  h1{
+  h1 {
     margin-bottom: 25px;
     line-height: 30px;
-    @media(min-width: 768px){
+
+    @media(min-width: 768px) {
       line-height: 40px;
       margin-bottom: 35px;
     }
   }
-  section{
-    font-size:12px;
+
+  section {
+    font-size: 12px;
     margin-bottom: 30px;
   }
-  .card-container_content{
+
+  .card-container_content {
     padding: 50px 15px 40px 15px;
     background-color: #fff;
-    @media(min-width: 768px){
-      padding:80px 80px 50px 80px;
+
+    @media(min-width: 768px) {
+      padding: 80px 80px 50px 80px;
     }
-    @media(min-width: 1920px){
+
+    @media(min-width: 1920px) {
       width: 1600px;
       box-sizing: border-box;
       margin: auto;
     }
+
     h3 {
       margin-bottom: 15px;
+
       @media (min-width:768px) {
         margin-bottom: 25px;
       }
@@ -277,29 +310,38 @@ code {
   }
 }
 
-.main-container{
+
+.card-container a, .main-container a {
+  color: #4b4a4b;
+}
+
+
+.main-container {
   padding-left: 15px;
   padding-right: 15px;
   box-sizing: border-box;
-  @media(min-width: 768px){
+
+  @media(min-width: 768px) {
     padding-left: 80px;
     padding-right: 80px;
   }
-  @media(min-width: 1920px){
+
+  @media(min-width: 1920px) {
     width: 1600px;
     padding: 0;
     margin: auto;
   }
 }
 
-.text-align-center{
+.text-align-center {
   text-align: center;
 }
 
 
 .padding-bottom-6 {
   padding-bottom: 60px;
-  @media(min-width:1024px){
+
+  @media(min-width:1024px) {
     padding-bottom: 100px;
   }
 }

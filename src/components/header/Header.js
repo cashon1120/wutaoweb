@@ -162,6 +162,11 @@ class Header extends Component {
               <a href='#contact'>联系我们</a>
             </li>
           </ul>
+          <div className="address">
+          <p>联系电话：13086662830</p>
+          <p>微信：dockingtech</p>
+          <p>地址：成都新世纪环球中心S1区1638室</p>
+          </div>
         </nav>
       </header>
 

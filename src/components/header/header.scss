@@ -68,6 +68,8 @@ nav {
     width: 221px;
     top: 0;
     bottom: 0;
+    height: 100vh;
+    box-sizing: border-box;
     right: 0;
     box-sizing: border-box;
     padding-top: 6vh;
@@ -95,15 +97,31 @@ nav {
     ul {
       background: none;
       width: auto;
-      position: relative;
       text-align: center;
-
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       a {
         font-size: 50px;
         color: #fff;
         margin: 15px auto;
         text-align: center;
       }
+    }
+  }
+
+  .address{
+    position: absolute;
+    width:221px;
+    z-index: 999;
+    right: 0;
+    bottom: 0;
+    text-align: left;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 0 25px 15px 25px;
+    p{
+      margin: 10px 0;
     }
   }
 }

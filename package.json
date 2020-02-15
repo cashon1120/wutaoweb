@@ -146,6 +146,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.7.4",
+    "generate-asset-webpack-plugin": "^0.3.0",
     "react-scripts": "^3.3.1"
   }
 }

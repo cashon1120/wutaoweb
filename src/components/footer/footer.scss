@@ -7,6 +7,13 @@ footer {
     ;
   }
 
+  .footer-container {
+    text-align: center;
+    section{
+      padding-bottom: 30px;
+    }
+  }
+
   .code {
     padding-top: 30px;
     text-align: center;
@@ -17,7 +24,6 @@ footer {
 
     @media(min-width: 1024px) {
       padding-top: 0;
-      text-align: right;
     }
   }
 
@@ -36,5 +42,11 @@ footer {
     @media(min-width:768px) {
       padding: 80px 80px 50px 80px !important;
     }
+  }
+
+  h1.title {
+    color: #fff;
+    text-align: center;
+    line-height: 1.5;
   }
 }

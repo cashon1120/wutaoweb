@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './footer.scss';
-import Image from '../../assets/images/code.png'
+import Image from '../../assets/images/code.jpg'
 
 class Footer extends Component {
   constructor(props) {
@@ -14,22 +14,18 @@ class Footer extends Component {
     return (
       <footer>
         <div className="card-container" id="contact">
-          <div className="card-container_content">
-            <h1>Interested in developing a next level mobile app?</h1>
-            <section>Give us a few details about your company and we’ll have someone contact
-              you shortly.</section>
+          <h1 className="title">我们在硅海滩。 <br/>来和我们打个招呼，聊聊吧！</h1>
+          <div className="card-container_content footer-container">
+            <h1>有兴趣开发下一代移动应用程序吗？</h1>
+            <section>扫码关注我们, 了解详情</section>
 
-            <div className="container-grid">
+            <div className="container-grid flex-center">
               <div className="col-xs-sm address">
-                600 Corporate Pointe
+              联系电话：13086662830
                 <br/>
-                Suite 1200
+                微信：dockingtech
                 <br/>
-                Culver City, CA 90230 17250 Dallas Pkwy
-                <br/>
-                Dallas, TX 75248 info@swensonhe.com
-                <br/>
-                424-465-2525
+                地址：成都新世纪环球中心S1区1638室
               </div>
               <div className="col-xs-sm code">
                 <img src={Image} alt="" />
