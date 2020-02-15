@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import './style.scss'
 import Footer from '../../components/footer/footer'
 import Image from '../../assets/images/work-1.jpg'
-class About extends Component {
+class Work extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -25,7 +25,7 @@ class About extends Component {
 
           <div className="work-list-container">
 
-            <div className="work-item-row">
+            <div className="container-grid work-item-row">
               <div className="col-xs-sm">
                 <div className="work-item">
                   <div className="img-wrapper">
@@ -39,7 +39,7 @@ class About extends Component {
                       Android, Bluetooth, Hybrid, Ionic, iOS, IoT, UI/UX
                     </div>
                   </div>
-                  <a href="#" className="more">view more</a>
+                  <a href="#" className="more">view more123</a>
                 </div>
               </div>
               <div className="space-30"></div>
@@ -61,7 +61,7 @@ class About extends Component {
               </div>
             </div>
 
-            <div className="container-grid">
+            <div className="container-grid work-item-row">
               <div className="col-xs-sm">
                 <div className="work-item">
                   <div className="img-wrapper">
@@ -107,4 +107,4 @@ class About extends Component {
   }
 }
 
-export default About;
+export default Work;

@@ -66,6 +66,7 @@ h1 {
 }
 h2{
   font-size: 16px;
+  color: #000;
   @media(min-width:768px){
     font-size: 21px;
   }
@@ -300,5 +301,20 @@ code {
   padding-bottom: 60px;
   @media(min-width:1024px){
     padding-bottom: 100px;
+  }
+}
+
+.process-h1 {
+  padding-top: 0 !important;
+  padding-bottom: 20px !important;
+
+  @media (min-width:768px) {
+    padding-top: 30px !important;
+    padding-bottom: 40px !important;
+  }
+
+  @media (min-width:1024px) {
+    padding-top: 60px !important;
+    padding-bottom: 50px !important;
   }
 }

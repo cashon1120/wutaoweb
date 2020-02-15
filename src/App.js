@@ -17,6 +17,11 @@ const Work = Loadable({
   loading: MyLoadingComponent
 });
 
+const WorkDetail = Loadable({
+  loader: () => import('./routes/work/detail'),
+  loading: MyLoadingComponent
+});
+
 const Services = Loadable({
   loader: () => import('./routes/services'),
   loading: MyLoadingComponent
@@ -36,7 +41,8 @@ function App() {
         <Header />
         <Switch>
           <Route path='/' exact component={Home}/>
-          <Route path='/work' component={Work}/>
+          <Route path='/work' exact component={Work}/>
+          <Route path='/work/detail/:id' exact component={WorkDetail}/>
           <Route path='/services' component={Services}/>
           <Route component={NoMatch}/>
         </Switch>

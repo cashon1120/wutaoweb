@@ -28,6 +28,7 @@ class Services extends Component {
       domList: null,
       windowHeight: null,
       animateDom: null,
+      scrollIndex: 0,
       scrollList: [83, 53, 22]
     };
   }
@@ -43,18 +44,16 @@ class Services extends Component {
   }
 
   handlerScroll = () => {
-    const {domList, windowHeight, animateDom, scrollList} = this.state
+    const {domList, windowHeight} = this.state
     if (windowHeight < 1024) {
       $.each(domList, (index, item) => {
         const mTop = item
           .getBoundingClientRect()
           .top;
         if (mTop <= windowHeight / 2) {
-          animateDom
-            .stop()
-            .animate({
-              top: -scrollList[index] + '%'
-            }, 300, 'swing');
+          this.setState({
+            scrollIndex: index
+          })
         }
       })
     }
@@ -65,7 +64,7 @@ class Services extends Component {
   }
 
   render() {
-    const {showProcessIndex} = this.state
+    const {showProcessIndex, scrollList, scrollIndex} = this.state
     return (
       <Fragment>
         {/** banner **/}
@@ -241,7 +240,7 @@ class Services extends Component {
           <h1 className="text-align-center process-h1">我们的过程</h1>
           <div className="process-wrapper">
             <div className="process-outer">
-              <div className="zz"></div>
+              <div className="zz" style={{top: scrollList[scrollIndex]* -1 +'%'}}></div>
               <div className="flex-container flex-end process">
                 <div
                   onMouseEnter={() => this.handlerShowProcess(0)}
