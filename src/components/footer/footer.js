@@ -14,9 +14,8 @@ class Footer extends Component {
     return (
       <footer>
         <div className="card-container" id="contact">
-          <h1 className="title">我们在硅海滩。 <br/>来和我们打个招呼，聊聊吧！</h1>
-          <div className="card-container_content footer-container">
-            <h1>有兴趣开发下一代移动应用程序吗？</h1>
+          <h1 className="title">我们在硅海滩。 <br/>来和我们打个招呼，聊聊吧！ <br/>有兴趣开发下一代移动应用程序吗？</h1>
+          <div className="footer-container">
             <section>扫码关注我们, 了解详情</section>
 
             <div className="container-grid flex-center">

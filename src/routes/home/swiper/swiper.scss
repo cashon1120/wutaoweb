@@ -1,6 +1,7 @@
 .swiper {
   background: #000;
   color: #fff;
+
   &.container {
     background: #000;
     position: relative;
@@ -16,7 +17,7 @@
     }
   }
 
-  .swiper-content{
+  .swiper-content {
     position: absolute;
     width: 100%;
     top: 0;
@@ -40,21 +41,23 @@
       opacity: 1;
     }
 
-    @media(min-width: 768px){
+    @media(min-width: 768px) {
       position: relative;
       height: 100vh;
     }
 
 
-    .screen-list{
+    .screen-list {
       position: relative;
       box-sizing: border-box;
+
       @media (min-width: 768px) {
         position: absolute;
         top: 50%;
         width: 100%;
         transform: translateY(-50%);
       }
+
       @media (min-width: 1024px) {
         display: flex;
         padding: 0 30px;
@@ -77,6 +80,7 @@
     max-width: 162px;
     margin: auto;
     z-index: 999;
+
     @media(min-width: 768px) {
       position: absolute;
       top: 38.5%;
@@ -117,9 +121,11 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+    height: 293px;
 
     @media (min-width: 768px) {
       margin-right: 0;
+      height: auto;
     }
 
     @media (min-width: 1024px) {
@@ -135,6 +141,9 @@
 
       @media(min-width: 768px) {
         max-width: 100%;
+      }
+      @media(min-width: 1366px) {
+        max-height:100%;
       }
     }
 
@@ -193,6 +202,7 @@
   @media(min-width: 768px) {
     height: 100vh;
     overflow: hidden;
+
     h1 {
       color: #fff;
     }
@@ -255,6 +265,7 @@
   box-sizing: border-box;
   align-items: center;
   margin-top: 30px;
+
   @media(min-width: 768px) {
     display: none;
   }
@@ -305,6 +316,7 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 8888;
+
     span {
       display: block;
       margin: 10px;
@@ -320,10 +332,12 @@
   right: 0;
   top: 0;
   display: none;
-  &.show{
+
+  &.show {
     display: block;
   }
-  i{
+
+  i {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -332,7 +346,40 @@
     opacity: .6;
     font-size: 50px;
   }
-  @media(min-width: 768px){
+
+  @media(min-width: 768px) {
     display: none;
   }
+}
+
+
+.first-screen {
+  padding: 0 15px 0 15px;
+  line-height: 1.5;
+  span {
+    font-size: 22px;
+
+    @media(min-width: 1024px) {
+      font-size: 32px;
+    }
+
+    @media(min-width: 1920px) {
+      font-size: 48px;
+    }
+  }
+
+  h1 {
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #5396d2;
+    @media(min-width: 1024px) {
+      font-size: 40px;
+    }
+  
+    @media(min-width: 1920px) {
+      font-size: 58px;
+    }
+  }
+  
 }

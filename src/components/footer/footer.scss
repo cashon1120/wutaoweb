@@ -1,16 +1,27 @@
 footer {
-  background: url(../../assets/images/footer-bg.jpg) bottom center no-repeat;
-  background-size: cover;
+  background-color: #f0f0f0;
+  font-size: 18px;
+  line-height: 1.2;
 
   .address {
-    line-height: 1.6;
-    ;
+    line-height: 1.5;
+    font-size: 14px;
+    @media(min-width: 768px){
+      line-height: 2;
+    }
   }
 
   .footer-container {
+    background: #f0f0f0 !important;
+    box-shadow: none !important;
     text-align: center;
-    section{
-      padding-bottom: 30px;
+
+    section {
+      font-size: 20px;
+      padding-bottom: 0;
+      @media(min-width: 768px){
+        padding-bottom: 30px;
+      }
     }
   }
 
@@ -35,18 +46,28 @@ footer {
     }
   }
 
+  .container-grid {
+    width: 60%;
+    margin: auto;
+    line-height: 2;
+  }
+
   .card-container_content {
     box-shadow: 0 8px 20px 0 hsla(0, 0%, 88%, .5);
     padding: 50px 30px !important;
 
     @media(min-width:768px) {
-      padding: 80px 80px 50px 80px !important;
+      padding: 0px 80px 50px 80px !important;
     }
   }
 
+  h1 {
+    opacity: .8;
+  }
+
   h1.title {
-    color: #fff;
     text-align: center;
     line-height: 1.5;
+    opacity: 1;
   }
 }

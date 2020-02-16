@@ -22,7 +22,7 @@ class Home extends Component {
           <div className="card-container_content content-wrapper">
             <h1>我们将构想从
               <br/>
-              构思带入 完成</h1>
+              构思带入完成</h1>
             <div className="container-grid">
               <div className="col-xs-sm">
                 <div className="content">

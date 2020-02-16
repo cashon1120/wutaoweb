@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import $ from 'jquery'
 import Logo from '../../assets/images/xm-logo.png';
+import LogoBlack from '../../assets/images/xm-logo-black.png';
 import {throttle, getOs, bodyScrollTo} from '../../utils/util'
 import './header.scss';
 
@@ -14,7 +15,8 @@ class Header extends Component {
       isOpen: false,
       isHome: false,
       showHeader: true,
-      lastScrollTop: null
+      lastScrollTop: null,
+      logo: Logo
     };
   }
 
@@ -93,10 +95,14 @@ class Header extends Component {
 
   setIndexHead() {
     const {pathname} = window.location
-    const isHome = (pathname === '/' || pathname === '/services')
+    const pageState = pathname === '/' || pathname === '/services'
+    const isHome = pageState
       ? true
       : false
-    this.setState({isHome})
+    const logo = pageState
+      ? Logo
+      : LogoBlack
+    this.setState({isHome, logo})
   }
 
   handlerOpen() {
@@ -114,7 +120,7 @@ class Header extends Component {
   }
 
   render() {
-    const {isOpen, isHome, showHeader} = this.state
+    const {isOpen, isHome, showHeader, logo} = this.state
     return (
       <header className={showHeader
         ? 'show'
@@ -125,7 +131,7 @@ class Header extends Component {
           : "container"}>
           <div className="flex-container header-container">
             <div className="flex-1">
-              <img src={Logo} className="logo" alt="logo"/>
+              <img src={logo} className="logo" alt="logo"/>
             </div>
             <div>
               <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>联系我们</span>
@@ -163,9 +169,9 @@ class Header extends Component {
             </li>
           </ul>
           <div className="address">
-          <p>联系电话：13086662830</p>
-          <p>微信：dockingtech</p>
-          <p>地址：成都新世纪环球中心S1区1638室</p>
+            <p>联系电话：13086662830</p>
+            <p>微信：dockingtech</p>
+            <p>地址：成都新世纪环球中心S1区1638室</p>
           </div>
         </nav>
       </header>
