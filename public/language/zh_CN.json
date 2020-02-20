@@ -1,0 +1,142 @@
+{
+  "header": {
+    "contact": "联系我们"
+  },
+
+  "index": {
+    "banner": {
+      "h1": "数字体验栩栩如生",
+      "h2": "我们是一家软件咨询公司，专门从事IOS,Android,小程序等平台的软件定制化设计和与开发服务"
+    },
+    "weDo": {
+      "title": "我们所做的一切都是",
+      "list":[
+        {
+          "title": "简单易用",
+          "imgSrc": "/images/Icon_24.png",
+          "text": "我们不会使事情复杂化。我们创建经过精心设计的智能软件解决方案，旨在为客户和最终用户简化生活。一切都与体验有关。"
+        }, {
+          "title": "功能强大且可扩展",
+          "imgSrc": "/images/Icon_64.png",
+          "text": "首先，我们分析问题。然后，我们计划，设计和构建一个灵活且完全可扩展的高性能定制软件解决方案。因此，您的软件与您的成功同步增长。"
+        }, {
+          "title": "安全可靠",
+          "imgSrc": "/images/Icon_63.png",
+          "text": "安全从未如此重要。我们的专业软件工程师创建了高度安全，强大和可靠的解决方案，我们对其进行了测试以防破坏并不断提高其安全性。"
+        }
+      ]
+    },
+    "scheme": {
+      "title": "精美而简单的软件解决方案，可应对极为复杂的挑战。",
+      "list": [
+        {
+          "title": "定制开发",
+          "imgSrc": "/images/Icon_31.png",
+          "text": "我们的软件开发人员会创建专门为您的项目编写的代码。没有懒惰的现成东西。"
+        }, {
+          "title": "锁，库存和桶",
+          "imgSrc": "/images/Icon_32.png",
+          "text": "您获得我们为您开发的任何软件的完整知识产权。完全的IP自由。"
+        }, {
+          "title": "不断发展的战略",
+          "imgSrc": "/images/Icon_34.png",
+          "text": "我们与您一起制定有效的技术战略，随着您的市场变化而发展。"
+        }, {
+          "title": "敏捷工作",
+          "imgSrc": "/images/Icon_43.png",
+          "text": "通过在sprint和迭代中开发软件解决方案，它不断适应成功。"
+        }, {
+          "title": "破解团队",
+          "imgSrc": "/images/Icon_35.png",
+          "text": "我们是一支经验丰富的专家团队。每个人都是专家，专注于他们的事情，但要一起工作。"
+        }, {
+          "title": "专业知识",
+          "imgSrc": "/images/Icon_37.png",
+          "text": "我们建造的所有东西都是由我们办事处的专家建造的。我们不需要或不想外包。"
+        },{
+          "title": "风险投资青睐",
+          "imgSrc": "/images/Icon_36.png",
+          "text": "我们有经验丰富的前vc从业人员，从提升技术壁垒与潜在价值角度为您出谋划策铺平融资道路。"
+        },{
+          "title": "ISO认证",
+          "imgSrc": "/images/Icon_39.png",
+          "text": "我们已通过ISO9001和ISO27001认证。我们符合质量和信息安全管理标准。"
+        }, {
+          "title": "3个月免费维护",
+          "imgSrc": "/images/Icon_48.png",
+          "text": "我们坚持所做的事情。发布后我们将提供3个月的免费维护支持。"
+        }, {
+          "title": "免费报价",
+          "imgSrc": "/images/Icon_44.png",
+          "text": "经过面对面的聊天并完全了解您的视野之后，我们将提供免费的零义务报价。"
+        }
+      ]
+    }
+  },
+
+  "case": {
+    "type": [{
+      "id": 1,
+      "value": "金融"
+    }, {
+      "id": 2,
+      "value": "电商"
+    }, {
+      "id": 3,
+      "value": "O2O"
+    }, {
+      "id": 4,
+      "value": "政务"
+    }, {
+      "id": 5,
+      "value": "OA"
+    }, {
+      "id": 6,
+      "value": "物联网"
+    }, {
+      "id": 7,
+      "value": "大数据"
+    }, {
+      "id": 8,
+      "value": "人工智能"
+    }],
+    "data": [{
+      "id": 1,
+      "title": "急先外卖蜂",
+      "content": "本土特色美食外卖，急速送达",
+      "imgSrc": "/images/case-1.png",
+      "videoImg": "/images/video-img-1.png",
+      "videoSrc": "/images/mp4-1.mp4",
+      "listImgSrc": "/images/case-list-1.png"
+    }, {
+      "id": 2,
+      "title": "阿闻商城",
+      "content": "阿闻商城，让养宠物更简单",
+      "videoImg": "/images/video-img-2.png",
+      "imgSrc": "/images/case-2.png",
+      "videoSrc": "/images/mp4-2.mp4",
+      "listImgSrc": "/images/case-list-2.png"
+    }, {
+      "id": 3,
+      "title": "卡片日记",
+      "content": "随手记录生活点滴 ",
+      "videoImg": "/images/video-img-3.png",
+      "imgSrc": "/images/case-3.jpg",
+      "videoSrc": "/images/mp4-2.mp4",
+      "listImgSrc": "/images/case-list-3.png"
+    }]
+  },
+
+  "contact": {
+    "title1": "来和我们打个招呼，聊聊吧",
+    "title2": "有兴趣开发下一代移动应用程序吗？",
+    "content": [
+      "我们是成都入坞科技有限公司",
+      "联系电话：13086662830",
+      "微信：dockingtech",
+      "邮箱:liyuheng@docking.net.cn",
+      "地址：成都新世纪环球中心S1区1638室"
+    ],
+    "img": "/images/code.jpg"
+  }
+}

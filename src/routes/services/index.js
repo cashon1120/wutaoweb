@@ -126,7 +126,7 @@ class Services extends Component {
               我们为iOS，Android和混合移动平台开发解决方案，每种解决方案都能满足不同的细分市场和特定的客户需求。
             </div>
             <div className="col-xs-sm service-img-phone">
-              {/* <img src={ImgPhone} alt=""/> */}
+              <img src={ImgPhone} alt=""/>
             </div>
           </div>
           <div className="padding-bottom-6">

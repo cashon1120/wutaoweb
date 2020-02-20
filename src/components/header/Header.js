@@ -17,7 +17,8 @@ class Header extends Component {
       isHome: false,
       showHeader: true,
       lastScrollTop: null,
-      logo: Logo
+      logo: Logo,
+      address: []
     };
   }
 
@@ -35,12 +36,17 @@ class Header extends Component {
     }, 200);
 
     this.setIndexHead()
+    this.setState({
+      address: intl.get('contact.content')
+    })
     $(document).on('scroll', throttle(this.headerToggleShow, 200))
   }
 
   changeLang = (lang) => {
     localStorage.setItem('lang', lang)
-    window.location.reload()
+    window
+      .location
+      .reload()
   }
 
   handlerScroll = (e) => {
@@ -126,7 +132,7 @@ class Header extends Component {
   }
 
   render() {
-    const {isOpen, isHome, showHeader, logo} = this.state
+    const {isOpen, isHome, showHeader, logo, address} = this.state
     const {changeLang} = this.props
     return (
       <header className={showHeader
@@ -139,18 +145,18 @@ class Header extends Component {
           <div className="flex-container header-container">
             <div className="flex-1">
               <img src={logo} className="logo" alt="logo"/>
-              
+
             </div>
             <div>
               <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>
-              {intl.get('header.contact')}
+                {intl.get('header.contact')}
               </span>
             </div>
-            <div>
-              {intl.options.currentLocale === ''}
-            <span onClick={() => changeLang('zh')}>中文版</span>
-            <span onClick={() => changeLang('en')}>英文版</span>
-            </div>
+            {/* <div style={{paddingRight:25}}>
+              {intl.options.currentLocale === 'zh'
+                ? <a href="#" onClick={() => changeLang('en')}>English</a>
+                : <a href="#" onClick={() => changeLang('zh')}>中文版</a>}
+            </div> */}
             <div>
               <span
                 className={isOpen
@@ -184,9 +190,7 @@ class Header extends Component {
             </li>
           </ul>
           <div className="address">
-            <p>联系电话：13086662830</p>
-            <p>微信：dockingtech</p>
-            <p>地址：成都新世纪环球中心S1区1638室</p>
+          {address.map(item => <p>{item}</p>)}
           </div>
         </nav>
       </header>

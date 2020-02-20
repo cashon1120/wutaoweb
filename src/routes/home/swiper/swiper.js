@@ -5,18 +5,6 @@ import intl from 'react-intl-universal';
 import {bodyScrollTo, getOs, throttle} from '../../../utils/util'
 import './swiper.scss'
 
-import Image1 from '../../../assets/images/case-1.png'
-import Image2 from '../../../assets/images/case-2.png'
-import Image3 from '../../../assets/images/case-3.jpg'
-
-import VideoImage1 from '../../../assets/images/video-img-1.png'
-import VideoImage2 from '../../../assets/images/video-img-2.png'
-import VideoImage3 from '../../../assets/images/video-img-3.png'
-
-import Mp41 from '../../../assets/images/mp4-1.mp4'
-import Mp42 from '../../../assets/images/mp4-2.mp4'
-import Mp43 from '../../../assets/images/mp4-3.mp4'
-
 import Iphone from '../../../assets/images/iphonex.png'
 
 class Swiper extends Component {
@@ -34,34 +22,14 @@ class Swiper extends Component {
       scrollIndex: 0,
       isPlayIndex: [false, false, false],
       showPlayBtnState: false,
-      data: [
-        {
-          id: 1,
-          title: '急先外卖蜂',
-          content: `本土特色美食外卖，急速送达`,
-          imgSrc: Image1,
-          videoImg: VideoImage1,
-          videoSrc: Mp41
-        }, {
-          id: 2,
-          title: '阿闻商城',
-          content: `阿闻商城，让养宠物更简单`,
-          imgSrc: Image2,
-          videoImg: VideoImage2,
-          videoSrc: Mp42
-        }, {
-          id: 3,
-          title: '卡片日记',
-          content: `随手记录生活点滴 `,
-          videoImg: VideoImage3,
-          imgSrc: Image3,
-          videoSrc: Mp43
-        }
-      ]
+      data: []
     };
   }
 
   componentDidMount() {
+    this.setState({
+      data: intl.get('case.data')
+    })
     this.setState({
       windowWidth: $(window).width(),
       windowHeight: $(window).height(),
@@ -276,8 +244,8 @@ class Swiper extends Component {
         <div className="main main-index first-screen full-screen-container">
           <div className="container full-screen-content">
             <div>
-              <h1>数字体验栩栩如生</h1>
-              <span>我们是一家软件咨询公司，专门从事IOS,Android,小程序等平台的软件定制化设计和与开发服务</span>
+            <h1>{intl.get('index.banner.h1')}</h1>
+              <span>{intl.get('index.banner.h2')}</span>
               <div className="arrow-down" onClick={() => windowWidth >= 768 ? this.setBodyScroll('html,body', 1) : null}>
                 <i className="iconfont">&#xe603;</i>
               </div>
@@ -339,7 +307,7 @@ class Swiper extends Component {
             </div>
             <div className="flex-1">
               <h1>{scrollIndex > -1
-                  ? data[scrollIndex].title
+                  ? data[scrollIndex] && [scrollIndex].title 
                   : ''}</h1>
             </div>
             <div>
@@ -350,7 +318,7 @@ class Swiper extends Component {
           <div className="swiper-point">
             {data.map((item, index) => (
               <span
-                key={item.title}
+                key={item.title || ''}
                 onClick={() => this.handleSetActive(index)}
                 className={scrollIndex === index
                 ? 'active'
