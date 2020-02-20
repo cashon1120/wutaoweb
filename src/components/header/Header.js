@@ -127,6 +127,7 @@ class Header extends Component {
 
   render() {
     const {isOpen, isHome, showHeader, logo} = this.state
+    const {changeLang} = this.props
     return (
       <header className={showHeader
         ? 'show'
@@ -141,13 +142,16 @@ class Header extends Component {
               
             </div>
             <div>
-              <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>联系我们
-              {/* {intl.get('MSG')} */}
+              <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>
+              {intl.get('header.contact')}
               </span>
             </div>
             <div>
-            {/* <button onClick={() => this.props.changeLang('zh')}>中文</button>
-            <button onClick={() => this.props.changeLang('en')}>英文</button> */}
+              {intl.options.currentLocale === ''}
+            <span onClick={() => changeLang('zh')}>中文版</span>
+            <span onClick={() => changeLang('en')}>英文版</span>
+            </div>
+            <div>
               <span
                 className={isOpen
                 ? 'nav-icon open'

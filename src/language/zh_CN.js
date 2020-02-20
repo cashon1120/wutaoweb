@@ -1,3 +1,5 @@
 export default {
-  "MSG": "你好世界"
+  header: {
+    contact: '联系我们'
+  }
 }

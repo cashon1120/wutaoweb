@@ -1,3 +1,5 @@
 export default {
-  "MSG": "Hello world"
+  header: {
+    contact: 'contact'
+  }
 }
