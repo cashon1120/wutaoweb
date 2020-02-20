@@ -63,7 +63,7 @@
           "text": "我们已通过ISO9001和ISO27001认证。我们符合质量和信息安全管理标准。"
         }, {
           "title": "3个月免费维护",
-          "imgSrc": "/images/Icon_48.png",
+          "imgSrc": "/images/Icon_38.png",
           "text": "我们坚持所做的事情。发布后我们将提供3个月的免费维护支持。"
         }, {
           "title": "免费报价",
@@ -73,7 +73,6 @@
       ]
     }
   },
-
   "case": {
     "type": [{
       "id": 1,
@@ -124,6 +123,21 @@
       "imgSrc": "/images/case-3.jpg",
       "videoSrc": "/images/mp4-2.mp4",
       "listImgSrc": "/images/case-list-3.png"
+    },{
+      "id": 4,
+      "title": "园畅",
+      "content": "产业园区周边商户的纽带 ",
+      "listImgSrc": "/images/case-list-4.jpg"
+    },{
+      "id": 5,
+      "title": "上屋云创家居",
+      "content": "一站式家装家居服务平台 线上商城+线下体验店 ",
+      "listImgSrc": "/images/case-list-5.jpg"
+    },{
+      "id": 6,
+      "title": "酒便利",
+      "content": "线上线下一体的经营模式 ",
+      "listImgSrc": "/images/case-list-6.jpg"
     }]
   },
 

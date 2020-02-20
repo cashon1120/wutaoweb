@@ -28,7 +28,7 @@ class Swiper extends Component {
 
   componentDidMount() {
     this.setState({
-      data: intl.get('case.data')
+      data: intl.get('case.data').slice(0,3)
     })
     this.setState({
       windowWidth: $(window).width(),
@@ -83,7 +83,7 @@ class Swiper extends Component {
     }
   }
 
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     $(document).unbind('scroll', this.bindDocumentScroll)
   }
 

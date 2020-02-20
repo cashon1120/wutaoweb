@@ -65,6 +65,8 @@
           &:hover {
             a {
               top: 50%;
+              box-sizing: border-box;
+              padding:0 30px;
               opacity: 1;
             }
 

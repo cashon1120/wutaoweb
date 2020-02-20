@@ -133,7 +133,6 @@ class Header extends Component {
 
   render() {
     const {isOpen, isHome, showHeader, logo, address} = this.state
-    const {changeLang} = this.props
     return (
       <header className={showHeader
         ? 'show'
@@ -190,7 +189,7 @@ class Header extends Component {
             </li>
           </ul>
           <div className="address">
-          {address.map(item => <p>{item}</p>)}
+          {address.map(item => <p key={item}>{item}</p>)}
           </div>
         </nav>
       </header>

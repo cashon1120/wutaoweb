@@ -27,25 +27,25 @@ class Work extends Component {
       <Fragment>
         <div className="main page-work">
           <div className="main-container">
-            <h1>这是我们真正引以为傲的一些工作。</h1>
+    <h1>这是我们真正引以为傲的一些工作。{intl.get('casetest')}</h1>
             <div className="category-list">
-              {type.map(item => <div key={item.id}>
-                <a href="#">{item.value}</a>
+              {type.map(item => <div key={item.value}>
+                <a href="/work">{item.value}</a>
               </div>)}
             </div>
 
             <div className="work-list-container">
 
               <Row gutter={[30, 50]}>
-                {data.map(item => <Col sm={24} md={12}>
+                {data.map(item => <Col sm={24} md={12}  key={item.title}>
                   <div className="work-item">
                     <div className="img-wrapper">
-                      <a href="#">{item.content}</a>
+                      <a href="#work">{item.content}</a>
                       <img src={item.listImgSrc} alt=""/>
                     </div>
                     <div className="works-landing__description">
                       <h5>
-                        <a href="#">{item.title}</a>
+                        <a href="#work">{item.title}</a>
                       </h5>
                       <div className="hidden-xxs">
                         {item.content}
