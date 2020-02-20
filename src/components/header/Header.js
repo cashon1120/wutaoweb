@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import $ from 'jquery'
-import intl from 'react-intl-universal';
 import Logo from '../../assets/images/xm-logo.png';
 import LogoBlack from '../../assets/images/xm-logo-black.png';
 import {throttle, getOs, bodyScrollTo} from '../../utils/util'
@@ -127,7 +126,6 @@ class Header extends Component {
 
   render() {
     const {isOpen, isHome, showHeader, logo} = this.state
-    const {changeLang} = this.props
     return (
       <header className={showHeader
         ? 'show'
@@ -142,14 +140,8 @@ class Header extends Component {
               
             </div>
             <div>
-              <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>
-              {intl.get('header.contact')}
+              <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>联系我们
               </span>
-            </div>
-            <div>
-              {intl.options.currentLocale === ''}
-            <span onClick={() => changeLang('zh')}>中文版</span>
-            <span onClick={() => changeLang('en')}>英文版</span>
             </div>
             <div>
               <span
