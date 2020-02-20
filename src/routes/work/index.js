@@ -3,13 +3,9 @@ import './style.scss'
 import {Row, Col} from 'antd'
 import Footer from '../../components/footer/footer'
 
-import Image1 from '../../assets/images/case-1.png'
-import Image2 from '../../assets/images/case-2.png'
-import Image3 from '../../assets/images/case-3.jpg'
-
-import VideoImage1 from '../../assets/images/video-img-1.png'
-import VideoImage2 from '../../assets/images/video-img-2.png'
-import VideoImage3 from '../../assets/images/video-img-3.png'
+import ListImage1 from '../../assets/images/case-list-1.png'
+import ListImage2 from '../../assets/images/case-list-2.png'
+import ListImage3 from '../../assets/images/case-list-3.png'
 
 class Work extends Component {
   constructor(props) {
@@ -20,20 +16,17 @@ class Work extends Component {
           id: 1,
           title: '急先外卖蜂',
           content: `本土特色美食外卖，急速送达`,
-          imgSrc: Image1,
-          videoImg: VideoImage1
+          imgSrc: ListImage1,
         }, {
           id: 2,
           title: '阿闻商城',
           content: `阿闻商城，让养宠物更简单`,
-          imgSrc: Image2,
-          videoImg: VideoImage2
+          imgSrc: ListImage2
         }, {
           id: 3,
           title: '卡片日记',
           content: `随手记录生活点滴 `,
-          videoImg: VideoImage3,
-          imgSrc: Image3
+          imgSrc: ListImage3
         }
       ],
       type: [
@@ -81,7 +74,7 @@ class Work extends Component {
 
             <div className="work-list-container">
 
-              <Row gutter={[30, 40]}>
+              <Row gutter={[30, 50]}>
                 {data.map(item => <Col sm={24} md={12}>
                   <div className="work-item">
                     <div className="img-wrapper">

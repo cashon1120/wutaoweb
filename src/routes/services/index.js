@@ -196,7 +196,7 @@ class Services extends Component {
             <div className="container-grid container-grid-3 flex-stretch">
               <div className="col-xs-sm content">
 
-                <h2>E-Commerce</h2>
+                <h2>电子商务</h2>
                 <div className="flex-container">
                   <div><img src={magentoLogo} alt=""/></div>
                   <div>Magento</div>
@@ -210,7 +210,7 @@ class Services extends Component {
               <div className="space-30"></div>
               <div className="col-xs-sm content">
 
-                <h2>Media And Content</h2>
+                <h2>媒体与内容</h2>
                 <div className="flex-container">
                   <div><img src={videosLogo} alt=""/></div>
                   <div>Videos</div>
@@ -227,7 +227,7 @@ class Services extends Component {
               <div className="space-30"></div>
               <div className="col-xs-sm content">
 
-                <h2>Hybrid</h2>
+                <h2>企业后台</h2>
                 <div className="flex-container">
                   <div><img src={mcLogo} alt=""/></div>
                   <div>Microsoft Great Plains</div>
