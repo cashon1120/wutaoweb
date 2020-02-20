@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import $ from 'jquery'
 import {Link} from 'react-router-dom';
+import intl from 'react-intl-universal';
 import {bodyScrollTo, getOs, throttle} from '../../../utils/util'
 import './swiper.scss'
 
@@ -80,6 +81,9 @@ class Swiper extends Component {
   }
 
   componentWillUnmount = () => {
+    const {scrollEle} = this.state
+    $(document).unbind('scroll', this.bindDocumentScroll)
+    this.handlerUnbindEvent(scrollEle, this.handlerScroll)
     this.setState = () => {
       return;
     };

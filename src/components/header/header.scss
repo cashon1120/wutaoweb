@@ -87,8 +87,8 @@ nav {
   @media (min-width:768px) {
     display: block;
     visibility: hidden;
+    background: rgba(0, 0, 0, .9);
     opacity: 0;
-    background: rgba(20, 100, 170, .95);
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -98,14 +98,19 @@ nav {
       background: none;
       width: auto;
       text-align: center;
+      position: fixed;
       top: 50%;
       left: 50%;
+      height:auto;
       transform: translate(-50%, -50%);
       a {
-        font-size: 50px;
+        font-size: 32px;
         color: #fff;
         margin: 15px auto;
         text-align: center;
+        @media(min-width: 1366px){
+          font-size: 40px;
+        }
       }
     }
   }
@@ -122,6 +127,9 @@ nav {
     padding: 0 25px 15px 25px;
     p{
       margin: 10px 0;
+    }
+    @media(min-width:768px){
+      display: none;
     }
   }
 }

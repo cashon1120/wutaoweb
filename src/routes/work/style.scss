@@ -6,6 +6,10 @@
   }
 
   .category-list {
+    div {
+      display: inline-block;
+    }
+
     a {
       margin-right: 15px;
       line-height: 1.5;
@@ -38,40 +42,6 @@
       overflow: hidden;
       position: relative;
 
-      a.more {
-        transition: all .5s;
-        position: absolute;
-        bottom: 10px;
-        left: -50px;
-        padding: 10px 10px 10px 40px;
-        position: relative;
-        display: inline-block;
-        opacity: 0;
-
-        &::before {
-          content: '';
-          display: inline-block;
-          border-top: 1px solid #4a4a4a;
-          width: 30px;
-          left: 0;
-          position: absolute;
-          top: 50%;
-        }
-      }
-
-      @media(min-width: 768px) {
-        &:hover {
-          .works-landing__description {
-            transform: translateY(-20px);
-          }
-
-          a {
-            left: 0;
-            opacity: 1;
-          }
-        }
-      }
-
       .works-landing__description {
         position: relative;
         z-index: 9;
@@ -89,12 +59,63 @@
         position: relative;
         padding-bottom: 66%;
         overflow: hidden;
+        background-color: #f2f2f2;
+
+        @media(min-width: 768px) {
+          &:hover {
+            a {
+              top: 50%;
+              opacity: 1;
+            }
+
+            &::after {
+              transform: scale(2) rotate(-45deg) translateZ(0px);
+              transition-duration: 1s;
+            }
+
+            img {
+              top: 50%;
+              transform: translateY(-50%) scale(1.2) ;
+              transform-origin: center center;
+            }
+          }
+        }
+
+        a {
+          display: block;
+          position: absolute;
+          opacity: 0;
+          color: #fff;
+          top: 20%;
+          transition: all .5s .2s;
+          text-align: center;
+          width: 100%;
+          font-size: 30px;
+          transform: translateY(-50%);
+          z-index: 99;
+        }
+
+        &::after {
+          content: '';
+          display: block;
+          background-color: rgba(0, 0, 0, .6);
+          transition: 3s transform cubic-bezier(0.23, 1, 0.32, 1);
+          opacity: .9;
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: scale(2) translateX(-100%) translateY(-100%) translateZ(0px) rotate(-45deg);
+        }
 
         img {
+          transition: all .5s;
           width: 100%;
           position: absolute;
           left: 0;
-          top: 0;
+          top: 50%;
+          transform: translateY(-50%);
         }
       }
     }

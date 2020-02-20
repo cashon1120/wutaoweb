@@ -3,14 +3,14 @@ const {
   fixBabelImports
 } = require('customize-cra');
 
-const GenerateAssetPlugin = require('generate-asset-webpack-plugin');
+// const GenerateAssetPlugin = require('generate-asset-webpack-plugin');
 
-//这就是那个你喜欢的写包含hash的json文件的部分
-const createJson = function (compilation) {
-  return JSON.stringify({
+// //这就是那个你喜欢的写包含hash的json文件的部分
+// const createJson = function (compilation) {
+//   return JSON.stringify({
     
-  });
-};
+//   });
+// };
 module.exports = override(
   fixBabelImports('import', {
     libraryName: 'antd',

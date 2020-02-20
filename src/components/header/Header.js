@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import $ from 'jquery'
+import intl from 'react-intl-universal';
 import Logo from '../../assets/images/xm-logo.png';
 import LogoBlack from '../../assets/images/xm-logo-black.png';
 import {throttle, getOs, bodyScrollTo} from '../../utils/util'
@@ -35,6 +36,11 @@ class Header extends Component {
 
     this.setIndexHead()
     $(document).on('scroll', throttle(this.headerToggleShow, 200))
+  }
+
+  changeLang = (lang) => {
+    localStorage.setItem('lang', lang)
+    window.location.reload()
   }
 
   handlerScroll = (e) => {
@@ -132,11 +138,16 @@ class Header extends Component {
           <div className="flex-container header-container">
             <div className="flex-1">
               <img src={logo} className="logo" alt="logo"/>
+              
             </div>
             <div>
-              <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>联系我们</span>
+              <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>联系我们
+              {/* {intl.get('MSG')} */}
+              </span>
             </div>
             <div>
+            {/* <button onClick={() => this.props.changeLang('zh')}>中文</button>
+            <button onClick={() => this.props.changeLang('en')}>英文</button> */}
               <span
                 className={isOpen
                 ? 'nav-icon open'
