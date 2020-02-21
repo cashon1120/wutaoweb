@@ -152,11 +152,11 @@ class Header extends Component {
                 {intl.get('header.contact')}
               </span>
             </div>
-            <div style={{paddingRight:25}}>
+            {/* <div style={{paddingRight:25}}>
               {intl.currentLocale === 'zh'
                 ? <a href="#" onClick={() => changeLang('en')}>English</a>
                 : <a href="#" onClick={() => changeLang('zh')}>中文版</a>}
-            </div>
+            </div> */}
             <div>
               <span
                 className={isOpen
