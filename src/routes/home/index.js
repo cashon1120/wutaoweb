@@ -23,7 +23,7 @@ class Home extends Component {
           <div className="card-container_content content-wrapper">
             <h1>{intl.get('index.sevices.title1')}
               <br/> {intl.get('index.sevices.title2')}</h1>
-            <div className="container-grid">
+            <div className="container-grid flex-stretch">
               <div className="col-xs-sm">
                 <div className="content">
 
