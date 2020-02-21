@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {Row, Col} from 'antd'
 import $ from 'jquery'
-import intl from 'react-intl-universal';
+import intl from '../../../utils/intl'
 import {throttle} from '../../../utils/util'
 
 import './intrduce.scss'
@@ -14,7 +14,7 @@ class Intrduce extends Component {
       data1: {
         title: '',
         list: []
-    },
+      },
       data2: {
         title: '',
         list: []
@@ -55,9 +55,9 @@ class Intrduce extends Component {
       <Fragment>
         <div className="black-bg intrduce">
           <div className="main-container">
-    <h1 className="process-h1 text-align-center">{data1.title}</h1>
+            <h1 className="process-h1 text-align-center">{data1.title}</h1>
             <Row gutter={[80, 50]}>
-              {data1.list.map(item => (
+              {(data1.list || []).map(item => (
                 <Col
                   sm={24}
                   md={12}
@@ -75,7 +75,7 @@ class Intrduce extends Component {
             </Row>
             <h1 className="process-h1 text-align-center">{data2.title}</h1>
             <Row gutter={[80, 50]}>
-              {data2.list.map(item => (
+              {(data2.list || []).map(item => (
                 <Col
                   sm={24}
                   md={12}

@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import intl from 'react-intl-universal';
+// import intl from 'react-intl-universal';
+
+import intl from './utils/intl'
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -19,9 +21,9 @@ const get_en = () => axios
   });
 
 axios.all([get_zh(), get_en()]).then(axios.spread(function (zh, en) {
-  const navigtorLang = (navigator.languages && navigator.languages[0]) || navigator.language
+  // const navigtorLang = (navigator.languages && navigator.languages[0]) || navigator.language
   intl.init({
-    currentLocale: navigtorLang.split('-')[0],
+    currentLocale: 'zh',
     locales: {
       zh,
       en

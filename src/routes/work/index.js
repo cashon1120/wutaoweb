@@ -1,9 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import './style.scss'
-import intl from 'react-intl-universal';
+import intl from '../../utils/intl'
 import {Row, Col} from 'antd'
 import Footer from '../../components/footer/footer'
-
 
 class Work extends Component {
   constructor(props) {
@@ -14,10 +13,10 @@ class Work extends Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.setState({
       data: intl.get('case.data'),
-      type:intl.get('case.type')
+      type: intl.get('case.type')
     })
   }
 
@@ -27,9 +26,9 @@ class Work extends Component {
       <Fragment>
         <div className="main page-work">
           <div className="main-container">
-    <h1>这是我们真正引以为傲的一些工作。{intl.get('casetest')}</h1>
+            <h1>{intl.get('work.title')}</h1>
             <div className="category-list">
-              {type.map(item => <div key={item.value}>
+              {(type || []).map(item => <div key={item.value}>
                 <a href="/work">{item.value}</a>
               </div>)}
             </div>
@@ -37,7 +36,7 @@ class Work extends Component {
             <div className="work-list-container">
 
               <Row gutter={[30, 50]}>
-                {data.map(item => <Col sm={24} md={12}  key={item.title}>
+                {(data || []).map(item => <Col sm={24} md={12} key={item.title}>
                   <div className="work-item">
                     <div className="img-wrapper">
                       <a href="#work">{item.content}</a>

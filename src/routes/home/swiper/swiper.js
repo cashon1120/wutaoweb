@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import $ from 'jquery'
 import {Link} from 'react-router-dom';
-import intl from 'react-intl-universal';
+import intl from '../../../utils/intl'
 import {bodyScrollTo, getOs, throttle} from '../../../utils/util'
 import './swiper.scss'
 
@@ -28,7 +28,7 @@ class Swiper extends Component {
 
   componentDidMount() {
     this.setState({
-      data: intl.get('case.data').slice(0,3)
+      data: intl.get('case.data') ? intl.get('case.data').slice(0,3) : []
     })
     this.setState({
       windowWidth: $(window).width(),
@@ -257,7 +257,7 @@ class Swiper extends Component {
           <div className={showPlayBtnState ? "playVideo show" : "playVideo"} onClick={this.handlerPLayVideo}><i className="iconfont">&#xe610;</i></div>
           <div className="swiper-content" id="scrollContent">
             {/* swiper */}
-            {data.map((item, index) => (
+            {(data || []).map((item, index) => (
               <div
                 className={scrollIndex === index
                 ? "screen-container active"
@@ -269,7 +269,7 @@ class Swiper extends Component {
                     <section>
                       {item.content}
                     </section>
-                    <Link className="btn btn-white" to={`/work/detail/${item.id}`}>查看详情</Link>
+                    <a className="btn btn-white" href='/work'>{intl.get('global.showdetail')}</a>
                   </div>
 
                   <div className="img-container">
@@ -316,7 +316,7 @@ class Swiper extends Component {
           </div>
           {/* 切换 标签*/}
           <div className="swiper-point">
-            {data.map((item, index) => (
+            {(data || []).map((item, index) => (
               <span
                 key={item.title || ''}
                 onClick={() => this.handleSetActive(index)}

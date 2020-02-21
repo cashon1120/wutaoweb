@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './footer.scss';
-import intl from 'react-intl-universal';
+import intl from '../../utils/intl'
 
 class Footer extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class Footer extends Component {
 
             <div className="container-grid flex-center">
               <div className="col-xs-sm address">
-                {data.content.map(item => 
+                {(data.content || []).map(item => 
                   <span key={item}>{item}<br/></span>
                 )}
               </div>

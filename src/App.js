@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Loadable from 'react-loadable';
-import intl from 'react-intl-universal';
+import intl from './utils/intl'
 import Header from './components/header/Header'
 
 
@@ -42,7 +42,7 @@ class App extends Component {
     }
   }
   changeLang = (lang) => {
-    intl.options.currentLocale = lang
+    intl.currentLocale = lang
     this.setState({
       lang
     })

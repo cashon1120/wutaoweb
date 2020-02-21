@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import Swiper from './swiper/swiper'
 import {Link} from 'react-router-dom';
+import intl from '../../utils/intl'
 import Footer from '../../components/footer/footer'
 import Intrduce from './intrduce/intrduce'
 
@@ -20,20 +21,20 @@ class Home extends Component {
         </div>
         <div className="card-container index-service">
           <div className="card-container_content content-wrapper">
-            <h1>我们将构想从
-              <br/>
-              构思带入完成</h1>
+            <h1>{intl.get('index.sevices.title1')}
+              <br/> {intl.get('index.sevices.title2')}</h1>
             <div className="container-grid">
               <div className="col-xs-sm">
                 <div className="content">
 
                   <Link to="/services">
-                    <h3>移动应用</h3>
+                    <h3>{intl.get('index.sevices.mobile.title')}</h3>
                     <div className="flex-container flex-end">
                       <div className="flex-1">
-                        iOS<br/>
-                        Android<br/>
-                        混合开发</div>
+                        {(intl
+                          .get('index.sevices.mobile.list')  || [])
+                          .map(item => <span key={item}>{item}<br/></span>)}
+                      </div>
                       <div>
                         <i className="iconfont">&#xe619;</i>
                       </div>
@@ -45,14 +46,14 @@ class Home extends Component {
               <div className="space-30"></div>
               <div className="col-xs-sm">
                 <div className="content">
-                <Link to="/services">
-                    <h3>网络应用</h3>
+                  <Link to="/services">
+                    <h3>{intl.get('index.sevices.webapp.title')}</h3>
                     <div className="flex-container flex-start">
                       <div className="flex-1">
-                        媒体和内容<br/>
-                        企业后台管理<br/>
-                        电子商务
-                        </div>
+                      {(intl
+                          .get('index.sevices.webapp.list') || [])
+                          .map(item => <span key={item}>{item}<br/></span>)}
+                      </div>
                       <div>
                         <i
                           className="iconfont"
@@ -65,15 +66,15 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-          
+
             <div className="service-btn">
-                <Link to="/services" className="btn btn-lg">查看更多</Link>
-            </div>            
+              <Link to="/services" className="btn btn-lg">{intl.get('global.showmore')}</Link>
+            </div>
           </div>
 
         </div>
-        <Intrduce />
-        <Footer />
+        <Intrduce/>
+        <Footer/>
       </Fragment>
     );
   }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import $ from 'jquery'
-import intl from 'react-intl-universal';
+import intl from '../../utils/intl'
 import Logo from '../../assets/images/xm-logo.png';
 import LogoBlack from '../../assets/images/xm-logo-black.png';
 import {throttle, getOs, bodyScrollTo} from '../../utils/util'
@@ -133,6 +133,7 @@ class Header extends Component {
 
   render() {
     const {isOpen, isHome, showHeader, logo, address} = this.state
+    const {changeLang} = this.props
     return (
       <header className={showHeader
         ? 'show'
@@ -151,11 +152,11 @@ class Header extends Component {
                 {intl.get('header.contact')}
               </span>
             </div>
-            {/* <div style={{paddingRight:25}}>
-              {intl.options.currentLocale === 'zh'
+            <div style={{paddingRight:25}}>
+              {intl.currentLocale === 'zh'
                 ? <a href="#" onClick={() => changeLang('en')}>English</a>
                 : <a href="#" onClick={() => changeLang('zh')}>中文版</a>}
-            </div> */}
+            </div>
             <div>
               <span
                 className={isOpen
@@ -189,7 +190,7 @@ class Header extends Component {
             </li>
           </ul>
           <div className="address">
-          {address.map(item => <p key={item}>{item}</p>)}
+          {(address || []).map(item => <p key={item}>{item}</p>)}
           </div>
         </nav>
       </header>
