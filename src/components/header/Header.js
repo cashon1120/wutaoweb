@@ -147,16 +147,17 @@ class Header extends Component {
               <img src={logo} className="logo" alt="logo"/>
 
             </div>
+            <div style={{paddingRight:25}}>
+              {intl.currentLocale === 'zh'
+                ? <a href="#" onClick={() => changeLang('en')}>English</a>
+                : <a href="#" onClick={() => changeLang('zh')}>中文版</a>}
+            </div>
             <div>
               <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>
                 {intl.get('header.contact')}
               </span>
             </div>
-            {/* <div style={{paddingRight:25}}>
-              {intl.currentLocale === 'zh'
-                ? <a href="#" onClick={() => changeLang('en')}>English</a>
-                : <a href="#" onClick={() => changeLang('zh')}>中文版</a>}
-            </div> */}
+            
             <div>
               <span
                 className={isOpen
