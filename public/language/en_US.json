@@ -1,13 +1,14 @@
 {
   "global": {
     "showmore": "show more",
-    "showdetail": "show detail"
+    "showdetail": "show detail",
+    "api": "http://47.111.186.62:8080/park/app/home/add_customer"
   },
 
   "header": {
     "contact": "contact us",
     "nav":[
-      "HOME","WORK","SERVICES","CONTACT US"
+      "HOME","WORK","SERVICES","CONTACT"
     ]
   },
 
@@ -172,8 +173,8 @@
     "territory": {
       "title": "Our areas of expertise",
       "mobile": {
-        "title": "移动应用",
-        "desc": "我们为iOS，Android和混合移动平台开发解决方案，每种解决方案都能满足不同的细分市场和特定的客户需求。",
+        "title": "Mobile Application",
+        "desc": "We provide smart solutions for platforms like IOS, Android and etc. Each solution is uniquely trageting client's needs",
         "list": [{
             "title": "iOS",
             "item": [{
@@ -267,8 +268,8 @@
           "desc": "We work closely with your design, product and engineering teams",
           "icon": "\ue600"
         }, {
-          "title": "了解用户",
-          "desc": "我们以客户为原型, 并以体验为核心, 以简单的心态进行开发",
+          "title": "Understanding users",
+          "desc": "We take customers as the prototype, experience as the core, and develop with a simple mindset",
           "icon": "\ue649"
         }]
       }, {
@@ -304,14 +305,28 @@
   "contact": {
     "title1": "Ready to share your great vision?",
     "title2": "Come and chat with us!",
-    "content": [
-      "Docking Co.,Ltd",
-      "Contact Phone：+(86)13086662830",
-      "Wechat：dockingtech",
-      "E-mail:info@docking.net.cn",
-      ""
-    ],
-    "img": "/images/code.jpg"
+    "form": {
+      "nikename": {
+        "label": "nikename",
+        "message": "please input your name"
+      },
+      "email": {
+        "label": "email",
+        "message": "input your email"
+      },
+      "desc": {
+        "label": "your needs",
+        "message": "input your needs"
+      }
+    },
+    "content": {
+      "name": "Docking Co.,Ltd",
+      "phone": "+(86)13086662830",
+      "wechat": "dockingtech",
+      "email": "liyuheng@docking.net.cn"
+    },
+    "img": "/images/code.jpg",
+    "downLoadTxt": "download image"
   },
 
   "work": {

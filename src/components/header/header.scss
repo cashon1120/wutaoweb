@@ -7,7 +7,9 @@ header {
   top: 0;
   background-color: #fff;
   box-shadow: 0 0 8px rgba(0, 0, 0, .1);
-
+  a{
+    color: #4b4a4b;
+  }
   .container {
     background: #fff;
     @media(min-width:1920px){
@@ -70,7 +72,6 @@ nav {
     position: absolute;
     width: 250px;
     top: 0;
-    bottom: 0;
     height: 100vh;
     box-sizing: border-box;
     right: 0;
@@ -123,7 +124,7 @@ nav {
     width:250px;
     z-index: 999;
     right: 0;
-    bottom: 0;
+    bottom: 50px;
     text-align: left;
     box-sizing: border-box;
     font-size: 14px;
@@ -201,6 +202,9 @@ nav {
 .index-header {
   width: 100% !important;
   box-sizing: border-box;
+  a{
+    color: #fff;
+  }
 }
 .index-header .nav-icon span,
 .nav-icon.open span {

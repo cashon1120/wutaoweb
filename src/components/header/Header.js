@@ -131,6 +131,7 @@ class Header extends Component {
     const {isOpen, isHome, showHeader, logo} = this.state
     const address = intl.get('contact.content')
     const nav = intl.get('header.nav')
+    const language = intl.currentLocale
     const {changeLang} = this.props
     return (
       <header className={showHeader
@@ -145,10 +146,12 @@ class Header extends Component {
               <img src={logo} className="logo" alt="logo"/>
 
             </div>
-            <div style={{paddingRight:25}}>
+            <div style={{
+              paddingRight: 25
+            }}>
               {intl.currentLocale === 'zh'
                 ? <a href="#" onClick={() => changeLang('en')}>English</a>
-                : <a href="#" onClick={() => changeLang('zh')}>中文版</a>}
+                : <a href="#" onClick={() => changeLang('zh')}>Chinese</a>}
             </div>
             <div>
               <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>
@@ -175,7 +178,7 @@ class Header extends Component {
           onClick={() => this.handlerOpen()}>
           <ul>
             <li>
-          <Link to='/'>{nav[0]}</Link>
+              <Link to='/'>{nav[0]}</Link>
             </li>
             <li>
               <Link to='/work'>{nav[1]}</Link>
@@ -188,7 +191,10 @@ class Header extends Component {
             </li>
           </ul>
           <div className="address">
-          {(address || []).map(item => <p key={item}>{item}</p>)}
+          <p>{language === 'zh' ? '电话' : 'Contact Phone'}: {address.phone}</p>
+            <p>{language === 'zh' ? '微信' : 'Wechat'}: {address.wechat}</p>
+            <p>{language === 'zh' ? '邮箱' : 'E-mail'}: {address.email}</p>
+            <p>{language === 'zh' ? '地址' : 'Address'}: {address.address}</p>
           </div>
         </nav>
       </header>
