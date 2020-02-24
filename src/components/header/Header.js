@@ -17,8 +17,7 @@ class Header extends Component {
       isHome: false,
       showHeader: true,
       lastScrollTop: null,
-      logo: Logo,
-      address: []
+      logo: Logo
     };
   }
 
@@ -36,9 +35,6 @@ class Header extends Component {
     }, 200);
 
     this.setIndexHead()
-    this.setState({
-      address: intl.get('contact.content')
-    })
     $(document).on('scroll', throttle(this.headerToggleShow, 200))
   }
 
@@ -132,7 +128,9 @@ class Header extends Component {
   }
 
   render() {
-    const {isOpen, isHome, showHeader, logo, address} = this.state
+    const {isOpen, isHome, showHeader, logo} = this.state
+    const address = intl.get('contact.content')
+    const nav = intl.get('header.nav')
     const {changeLang} = this.props
     return (
       <header className={showHeader
@@ -178,16 +176,16 @@ class Header extends Component {
           onClick={() => this.handlerOpen()}>
           <ul>
             <li>
-              <Link to='/'>首页</Link>
+          <Link to='/'>{nav[0]}</Link>
             </li>
             <li>
-              <Link to='/work'>案例</Link>
+              <Link to='/work'>{nav[1]}</Link>
             </li>
             <li>
-              <Link to='/services'>服务</Link>
+              <Link to='/services'>{nav[2]}</Link>
             </li>
             <li>
-              <a href='#contact'>联系我们</a>
+              <a href='#contact'>{nav[3]}</a>
             </li>
           </ul>
           <div className="address">

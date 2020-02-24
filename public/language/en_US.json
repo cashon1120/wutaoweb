@@ -5,89 +5,92 @@
   },
 
   "header": {
-    "contact": "contact us"
+    "contact": "contact us",
+    "nav":[
+      "HOME","WORK","SERVICES","CONTACT US"
+    ]
   },
 
 
   "index": {
     "banner": {
-      "h1": "数字体验栩栩如生",
-      "h2": "我们是一家软件咨询公司，专门从事IOS,Android,小程序等平台的软件定制化设计和与开发服务"
+      "h1": "Go,speed the stars of thoughts",
+      "h2": "As a software consulting agency, we provide customized digital application development service"
     },
 
     "sevices": {
-      "title1": "我们将构想从",
-      "title2": "构思带入完成",
+      "title1": "From idea",
+      "title2": "to real",
       "mobile": {
-        "title": "移动应用",
-        "list": ["iOS", "Android", "混合开发"]
+        "title": "Mobile Application",
+        "list": ["iOS", "Android", "Hybird", "Wechat Mini Program"]
       },
 
       "webapp": {
-        "title": "网络应用",
-        "list": ["媒体和内容", "企业后台管理", "电子商务"]
+        "title": "Digital Application",
+        "list": ["CRM", "OA Application", "Digital Business"]
       }
     },
 
     "weDo": {
-      "title": "我们所做的一切都是",
+      "title": "Everything we do is",
       "list": [{
-        "title": "简单易用",
+        "title": "Easy to use",
         "imgSrc": "/images/Icon_24.png",
-        "text": "我们不会使事情复杂化。我们创建经过精心设计的智能软件解决方案，旨在为客户和最终用户简化生活。一切都与体验有关。"
+        "text": "We hate to complicate things so we carefully design to focus on the most important experience"
       }, {
-        "title": "功能强大且可扩展",
+        "title": "Powerful and scalable",
         "imgSrc": "/images/Icon_64.png",
-        "text": "首先，我们分析问题。然后，我们计划，设计和构建一个灵活且完全可扩展的高性能定制软件解决方案。因此，您的软件与您的成功同步增长。"
+        "text": "By finding a stable ground, we build the Minimual Viable Product with high scalable performance so the software grows with your success"
       }, {
-        "title": "安全可靠",
+        "title": "Safe and reliable",
         "imgSrc": "/images/Icon_63.png",
-        "text": "安全从未如此重要。我们的专业软件工程师创建了高度安全，强大和可靠的解决方案，我们对其进行了测试以防破坏并不断提高其安全性。"
+        "text": "Safety is our engineers'top priority as we creating a highly secure, robust and reliable solution which will be tested thousand times to avoid disruption"
       }]
     },
 
     "scheme": {
-      "title": "精美而简单的软件解决方案，可应对极为复杂的挑战。",
+      "title": "Beautiful and simple software solutions for extremely complex challenges",
       "list": [{
-        "title": "定制开发",
+        "title": "Customized Development",
         "imgSrc": "/images/Icon_31.png",
-        "text": "我们的软件开发人员会创建专门为您的项目编写的代码。没有懒惰的现成东西。"
+        "text": "We love challanging projects and hate to use template"
       }, {
-        "title": "锁，库存和桶",
+        "title": "Total ownership",
         "imgSrc": "/images/Icon_32.png",
-        "text": "您获得我们为您开发的任何软件的完整知识产权。完全的IP自由。"
+        "text": "you will obtain all the intellectual property"
       }, {
-        "title": "不断发展的战略",
+        "title": "Evolving strategy",
         "imgSrc": "/images/Icon_34.png",
-        "text": "我们与您一起制定有效的技术战略，随着您的市场变化而发展。"
+        "text": "We always work by your side as the market changes"
       }, {
-        "title": "敏捷工作",
+        "title": "Agile environment",
         "imgSrc": "/images/Icon_43.png",
-        "text": "通过在sprint和迭代中开发软件解决方案，它不断适应成功。"
+        "text": "By iteration in spring, we reach the goal step by step"
       }, {
-        "title": "破解团队",
+        "title": "Growing Hackers",
         "imgSrc": "/images/Icon_35.png",
-        "text": "我们是一支经验丰富的专家团队。每个人都是专家，专注于他们的事情，但要一起工作。"
+        "text": "All of our experts are zealot of programming"
       }, {
-        "title": "专业知识",
+        "title": "Professinal Development",
         "imgSrc": "/images/Icon_37.png",
-        "text": "我们建造的所有东西都是由我们办事处的专家建造的。我们不需要或不想外包。"
+        "text": "Everything we delivered are build by our experts so we dont need outside help"
       }, {
-        "title": "风险投资青睐",
+        "title": "Prefer of Venture Capital",
         "imgSrc": "/images/Icon_36.png",
-        "text": "我们有经验丰富的前vc从业人员，从提升技术壁垒与潜在价值角度为您出谋划策铺平融资道路。"
+        "text": "Our business consulting team provide distinguied suggestion from VC's perspective"
       }, {
-        "title": "ISO认证",
+        "title": "ISO",
         "imgSrc": "/images/Icon_39.png",
-        "text": "我们已通过ISO9001和ISO27001认证。我们符合质量和信息安全管理标准。"
+        "text": "We've passed both ISO9001 and ISO27001 that ensure our quality"
       }, {
-        "title": "3个月免费维护",
+        "title": "One year maintenance",
         "imgSrc": "/images/Icon_38.png",
-        "text": "我们坚持所做的事情。发布后我们将提供3个月的免费维护支持。"
+        "text": "We stick on what we've build as we provide one year free Maintenance"
       }, {
-        "title": "免费报价",
+        "title": "Free and fast quote",
         "imgSrc": "/images/Icon_44.png",
-        "text": "经过面对面的聊天并完全了解您的视野之后，我们将提供免费的零义务报价。"
+        "text": "Come and chat with us about your great vision and see our quote"
       }]
     }
   },
@@ -95,28 +98,28 @@
   "case": {
     "type": [{
       "id": 1,
-      "value": "金融"
+      "value": "Finance"
     }, {
       "id": 2,
-      "value": "电商"
+      "value": "Digital Business"
     }, {
       "id": 3,
       "value": "O2O"
     }, {
       "id": 4,
-      "value": "政务"
+      "value": "Government"
     }, {
       "id": 5,
       "value": "OA"
     }, {
       "id": 6,
-      "value": "物联网"
+      "value": "IOT"
     }, {
       "id": 7,
-      "value": "大数据"
+      "value": "Big Data"
     }, {
       "id": 8,
-      "value": "人工智能"
+      "value": "Artificial intelligence"
     }],
     "data": [{
       "id": 1,
@@ -162,12 +165,12 @@
 
   "services": {
     "banner": {
-      "title1": "在此过程的每个步骤中，我们都与客户紧密合作。",
-      "title2": "从设计到开发，我们采取平衡的方法，每个部分都受到同等的关注和关注。"
+      "title1": "We closely work with you for each period of our service。",
+      "title2": "We always try to find the balance of every steps"
     },
 
     "territory": {
-      "title": "我们的专业领域",
+      "title": "Our areas of expertise",
       "mobile": {
         "title": "移动应用",
         "desc": "我们为iOS，Android和混合移动平台开发解决方案，每种解决方案都能满足不同的细分市场和特定的客户需求。",
@@ -214,10 +217,10 @@
         ]
       },
       "webapp": {
-        "title": "网络应用",
-        "desc": "我们在为各种基于Web的应用程序构建方面拥有丰富的经验，并与客户一起确定理想的框架和平台。",
+        "title": "Digital Application",
+        "desc": "We have extensive experience in building a variety of web-based applications and work with customers to determine the ideal framework and platform",
         "list": [{
-            "title": "电子商务",
+            "title": "Digital Business",
             "item": [{
                 "name": "Magento",
                 "imgSrc": "/images/magento-logo.png"
@@ -229,7 +232,7 @@
             ]
           },
           {
-            "title": "媒体与内容",
+            "title": "Elegant and Refined",
             "item": [{
                 "name": "Videos",
                 "imgSrc": "/images/youtube-logo.png"
@@ -245,7 +248,7 @@
             ]
           },
           {
-            "title": "企业后台",
+            "title": "OA",
             "item": [{
               "name": "Microsoft Great Plains",
               "imgSrc": "/images/microsoft-great-plains-logo.png"
@@ -256,12 +259,12 @@
     },
 
     "process": {
-      "title": "我们的过程",
+      "title": "Development Process",
       "list": [{
-        "h1": "战略规划",
+        "h1": "Strategic Planning",
         "item": [{
-          "title": "了解产品",
-          "desc": "我们与您的设计，产品和工程团队紧密合作。",
+          "title": "Understand the product",
+          "desc": "We work closely with your design, product and engineering teams",
           "icon": "\ue600"
         }, {
           "title": "了解用户",
@@ -269,29 +272,29 @@
           "icon": "\ue649"
         }]
       }, {
-        "h1": "UI/UX 设计",
+        "h1": "UI/UX Design",
         "item": [{
-          "title": "线框图和经验",
-          "desc": "使用每项功能，我们都会反复进行，直到在4次或更短的屏幕点击时间内即可完成任何操作。",
+          "title": "Lines and experiences",
+          "desc": "With each feature, we repeat iteratively, until everything is done in 4 or less screen clicks",
           "icon": "\ue61e"
         }, {
-          "title": "设计与品牌匹配",
-          "desc": "根据您的品牌，要格外小心，以确保每个屏幕，动画和按钮都一致，优雅且精致。",
+          "title": "Design and brand match",
+          "desc": "Depending on your brand, we are extra careful to ensure that every screen, animation and button is consistent, elegant and refined",
           "icon": "\ue684"
         }]
       }, {
-        "h1": "发展历程",
+        "h1": "Development",
         "item": [{
-          "title": "原型制作",
-          "desc": "在开发之前和开发过程中基于反馈进行迭代可确保应用程序达到并超过期望。",
+          "title": "Prototyping",
+          "desc": "Iterating based on feedback before and during development ensures that the application meets and exceeds expectations",
           "icon": "\ue619"
         }, {
-          "title": "测试中",
-          "desc": "我们花费数百小时来测试多种设备的质量保证。",
+          "title": "Testing",
+          "desc": "We spend hundreds of hours testing the quality assurance of multiple devices.",
           "icon": "\ue602"
         }, {
-          "title": "生产和迭代",
-          "desc": "我们采用策略来捕获用户的诚实反馈，而不会对应用商店的评分产生负面影响。",
+          "title": "Production and iteration",
+          "desc": "We use strategies to capture honest feedback from users without negatively impacting app store ratings.",
           "icon": "\ue618"
         }]
       }]
@@ -299,19 +302,19 @@
   },
 
   "contact": {
-    "title1": "来和我们打个招呼，聊聊吧",
-    "title2": "有兴趣开发下一代移动应用程序吗？",
+    "title1": "Ready to share your great vision?",
+    "title2": "Come and chat with us!",
     "content": [
-      "我们是成都入坞科技有限公司",
-      "联系电话：13086662830",
-      "微信：dockingtech",
-      "邮箱:liyuheng@docking.net.cn",
-      "地址：成都新世纪环球中心S1区1638室"
+      "Docking Co.,Ltd",
+      "Contact Phone：+(86)13086662830",
+      "Wechat：dockingtech",
+      "E-mail:info@docking.net.cn",
+      ""
     ],
     "img": "/images/code.jpg"
   },
 
   "work": {
-    "title": "这是我们真正引以为傲的一些工作。"
+    "title": "Works we proud of。"
   }
 }

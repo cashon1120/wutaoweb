@@ -10,15 +10,7 @@ class Intrduce extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemHeight: 'auto',
-      data1: {
-        title: '',
-        list: []
-      },
-      data2: {
-        title: '',
-        list: []
-      }
+      itemHeight: 'auto'
     }
 
   }
@@ -26,10 +18,6 @@ class Intrduce extends Component {
   componentDidMount() {
     window.addEventListener('resize', throttle(this.handlerSetHight, 300))
     this.handlerSetHight()
-    this.setState({
-      data1: intl.get('index.weDo'),
-      data2: intl.get('index.scheme')
-    })
   }
 
   handlerSetHight = () => {
@@ -50,14 +38,14 @@ class Intrduce extends Component {
   }
 
   render() {
-    const {data1, data2, itemHeight} = this.state
+    const {itemHeight} = this.state
     return (
       <Fragment>
         <div className="black-bg intrduce">
           <div className="main-container">
-            <h1 className="process-h1 text-align-center">{data1.title}</h1>
+            <h1 className="process-h1 text-align-center">{intl.get('index.weDo').title}</h1>
             <Row gutter={[80, 50]}>
-              {(data1.list || []).map(item => (
+              {(intl.get('index.weDo').list || []).map(item => (
                 <Col
                   sm={24}
                   md={12}
@@ -73,9 +61,9 @@ class Intrduce extends Component {
                 </Col>
               ))}
             </Row>
-            <h1 className="process-h1 text-align-center">{data2.title}</h1>
+            <h1 className="process-h1 text-align-center">{intl.get('index.scheme').title}</h1>
             <Row gutter={[80, 50]}>
-              {(data2.list || []).map(item => (
+              {(intl.get('index.scheme').list || []).map(item => (
                 <Col
                   sm={24}
                   md={12}

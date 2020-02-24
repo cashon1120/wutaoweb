@@ -5,23 +5,11 @@ import {Row, Col} from 'antd'
 import Footer from '../../components/footer/footer'
 
 class Work extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      type: []
-    };
-  }
-
-  componentDidMount() {
-    this.setState({
-      data: intl.get('case.data'),
-      type: intl.get('case.type')
-    })
-  }
 
   render() {
-    const {type, data} = this.state
+    const data = intl.get('case.data')
+    const type = intl.get('case.type')
+    console.log(data)
     return (
       <Fragment>
         <div className="main page-work">

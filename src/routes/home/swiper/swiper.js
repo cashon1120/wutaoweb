@@ -237,7 +237,8 @@ class Swiper extends Component {
   }
 
   render() {
-    const {data, scrollIndex, showPlayBtnState, windowWidth, isPlayIndex} = this.state
+    const {scrollIndex, showPlayBtnState, windowWidth, isPlayIndex} = this.state
+    const data = intl.get('case.data') ? intl.get('case.data').slice(0,3) : []
     const isMobile = windowWidth < 768 ? true : false
     return (
       <div id="scrollDom">

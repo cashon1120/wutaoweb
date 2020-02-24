@@ -15,21 +15,13 @@ class Footer extends Component {
     };
   }
 
-  componentDidMount() {
-    this.setState({
-      data: intl.get('contact')
-    })
-  }
-
   render() {
-    const {data} = this.state
+    const data = intl.get('contact')
     return (
       <footer>
         <div className="card-container" id="contact">
           <h1 className="title">{data.title1} <br/>{data.title2}</h1>
           <div className="footer-container">
-            <section>扫码关注我们, 了解详情</section>
-
             <div className="container-grid flex-center">
               <div className="col-xs-sm address">
                 {(data.content || []).map(item => 
