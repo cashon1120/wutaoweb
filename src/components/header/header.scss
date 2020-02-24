@@ -10,6 +10,9 @@ header {
 
   .container {
     background: #fff;
+    @media(min-width:1920px){
+      width: 100%;
+    }
   }
 
   &.show {
@@ -65,7 +68,7 @@ nav {
   ul {
     background: #000;
     position: absolute;
-    width: 221px;
+    width: 250px;
     top: 0;
     bottom: 0;
     height: 100vh;
@@ -117,7 +120,7 @@ nav {
 
   .address{
     position: absolute;
-    width:221px;
+    width:250px;
     z-index: 999;
     right: 0;
     bottom: 0;

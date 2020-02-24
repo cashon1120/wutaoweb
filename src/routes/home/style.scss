@@ -13,10 +13,18 @@
 }
 
 .arrow-down {
+ 
+  
+ 
   text-align: center;
   padding-top: 40px;
   animation: bounce 1.5s infinite;
-
+  @media(min-width:768px){
+    position: absolute;
+    bottom: 30px;
+    left:0;
+    right: 0;
+  }
   i {
     cursor: pointer;
     font-size: 30px;
@@ -55,6 +63,7 @@
 .content-wrapper {
   box-shadow: 0 5px 12px rgba(0,0,0, .1);
   .content {
+    height: 100%;
     i {
       font-size: 40px;
       opacity: .5;

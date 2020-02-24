@@ -133,6 +133,7 @@ code {
 }
 
 .flex-stretch {
+  display: flex !important;
   align-items: stretch !important;
 }
 

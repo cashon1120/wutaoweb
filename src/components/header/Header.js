@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import $ from 'jquery'
+import intl from '../../utils/intl'
 import Logo from '../../assets/images/xm-logo.png';
 import LogoBlack from '../../assets/images/xm-logo-black.png';
 import {throttle, getOs, bodyScrollTo} from '../../utils/util'
@@ -39,7 +40,9 @@ class Header extends Component {
 
   changeLang = (lang) => {
     localStorage.setItem('lang', lang)
-    window.location.reload()
+    window
+      .location
+      .reload()
   }
 
   handlerScroll = (e) => {
@@ -126,6 +129,9 @@ class Header extends Component {
 
   render() {
     const {isOpen, isHome, showHeader, logo} = this.state
+    const address = intl.get('contact.content')
+    const nav = intl.get('header.nav')
+    const {changeLang} = this.props
     return (
       <header className={showHeader
         ? 'show'
@@ -137,10 +143,16 @@ class Header extends Component {
           <div className="flex-container header-container">
             <div className="flex-1">
               <img src={logo} className="logo" alt="logo"/>
-              
+
+            </div>
+            <div style={{paddingRight:25}}>
+              {intl.currentLocale === 'zh'
+                ? <a href="#" onClick={() => changeLang('en')}>English</a>
+                : <a href="#" onClick={() => changeLang('zh')}>中文版</a>}
             </div>
             <div>
-              <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>联系我们
+              <span className="btn nav-contact" onClick={() => this.handlerShowContact()}>
+                {intl.get('header.contact')}
               </span>
             </div>
             <div>
@@ -163,22 +175,20 @@ class Header extends Component {
           onClick={() => this.handlerOpen()}>
           <ul>
             <li>
-              <Link to='/'>首页</Link>
+          <Link to='/'>{nav[0]}</Link>
             </li>
             <li>
-              <Link to='/work'>案例</Link>
+              <Link to='/work'>{nav[1]}</Link>
             </li>
             <li>
-              <Link to='/services'>服务</Link>
+              <Link to='/services'>{nav[2]}</Link>
             </li>
             <li>
-              <a href='#contact'>联系我们</a>
+              <a href='#contact'>{nav[3]}</a>
             </li>
           </ul>
           <div className="address">
-            <p>联系电话：13086662830</p>
-            <p>微信：dockingtech</p>
-            <p>地址：成都新世纪环球中心S1区1638室</p>
+          {(address || []).map(item => <p key={item}>{item}</p>)}
           </div>
         </nav>
       </header>
