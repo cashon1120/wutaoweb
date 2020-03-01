@@ -2,7 +2,8 @@
   "global": {
     "showmore": "查看更多",
     "showdetail": "查看详情",
-    "api": "http://47.111.186.62:8080"
+    "api": "http://47.111.186.62:8080",
+    "responsemsg": "我们收到啦"
   },
 
   "header": {
@@ -306,8 +307,8 @@
     "title2": "来和我们打个招呼，聊聊吧",
     "form": {
       "nikename": {
-        "label": "用户名称",
-        "message": "请输入您的姓名"
+        "label": "名称",
+        "message": "请输入您的名称"
       },
       "email": {
         "label": "邮箱",

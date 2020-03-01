@@ -58,17 +58,11 @@ class Footer extends Component {
     e.preventDefault();
     validateFields((err, values) => {
       if (!err) {
-        axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
         const {nikename, desc, email} = values
-        var params = new URLSearchParams();
-        params.append('nikename', nikename); //你要传给后台的参数值 key/value
-        params.append('desc', desc);
-        params.append('email', email);
-        axios.post(intl.get('global.api') + '/park/app/home/add_customer', params).then(response => {
-          resetFields()
-          message.success({content: response.data.msg})
-          this.setState({loading: false})
-        })
+        const img = new Image()
+        img.src=`${intl.get('global.api')}/park/app/home/add_customer?nikename=${nikename}&desc=${desc}&email=${email}`
+        message.success({content: intl.get('global.responsemsg'), icon: <i></i>})
+        resetFields()
       }
     })
   }
@@ -112,7 +106,6 @@ class Footer extends Component {
                     {getFieldDecorator(`email`, {
                       rules: [
                         {
-                          pattern: /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/,
                           required: true,
                           message: data.form.email.message
                         }

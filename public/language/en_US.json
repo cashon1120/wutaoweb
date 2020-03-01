@@ -2,7 +2,8 @@
   "global": {
     "showmore": "show more",
     "showdetail": "show detail",
-    "api": "http://47.111.186.62:8080/park/app/home/add_customer"
+    "api": "http://47.111.186.62:8080/park/app/home/add_customer",
+    "responsemsg": "我们收到啦"
   },
 
   "header": {
