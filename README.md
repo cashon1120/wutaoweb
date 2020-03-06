@@ -1,16 +1,16 @@
 <!--
- * @Author: your name
+ * @Author:cashon
  * @Date: 2020-03-03 15:35:08
- * @LastEditTime: 2020-03-06 09:07:07
- * @LastEditors: your name
+ * @LastEditTime: 2020-03-06 09:11:19
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /wutaoweb/README.md
  -->
-## 一个企业网站
-- React
-- CSS3 动画
-- 自己写了一套语言版本切换功能
 
-[地址](https://docking.net.cn/) (有点慢...)
+## 用法
+- npm install
+- npm run start
+
+[地址](https://docking.net.cn/) 
 
 
