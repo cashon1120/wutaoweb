@@ -57,7 +57,7 @@ class App extends Component {
             <Route path='/work' exact component={Work}/>
             {/* <Route path='/work/detail/:id' exact component={WorkDetail}/> */}
             <Route path='/services' component={Services}/>
-            <Route component={NoMatch}/>
+            <Route component={Home}/>
           </Switch>
         </BrowserRouter>
       </Fragment>

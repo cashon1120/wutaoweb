@@ -191,7 +191,8 @@ class Header extends Component {
             </li>
           </ul>
           <div className="address">
-          <p>{language === 'zh' ? '电话' : 'Contact Phone'}: {address.phone}</p>
+          <p>{language === 'zh' ? '中国大陆地区' : 'CN Tel'}: <br/>{address.phone}</p>
+          <p>{language === 'zh' ? '北美电话' : 'North American Tel'}: {address.naphone}</p>
             <p>{language === 'zh' ? '微信' : 'Wechat'}: {address.wechat}</p>
             <p>{language === 'zh' ? '邮箱' : 'E-mail'}: {address.email}</p>
             <p>{language === 'zh' ? '地址' : 'Address'}: {address.address}</p>

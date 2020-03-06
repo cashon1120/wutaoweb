@@ -152,11 +152,18 @@ class Footer extends Component {
             <div className="container-grid flex-center address-container">
               <div className="col-xs-sm address">
                 {language === 'zh'
-                  ? '电话'
-                  : 'Contact Phone'}:
+                  ? '中国大陆地区'
+                  : 'CN Tel'}:
                 <br/>
                 <span>
                   <a href={"tel:" + data.content.phone}>{data.content.phone}</a>
+                </span>
+                {language === 'zh'
+                  ? '北美电话'
+                  : 'North American Tel'}:
+                <br/>
+                <span>
+                  <a href={"tel:" + data.content.naphone}>{data.content.naphone}</a>
                 </span>
                 {language === 'zh'
                   ? '微信'
